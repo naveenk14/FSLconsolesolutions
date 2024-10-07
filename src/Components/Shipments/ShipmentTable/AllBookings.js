@@ -361,29 +361,49 @@ const AllBookings = ({
     );
   };
   const bodyTemplate = (rowData) => {
+    const {
+      actual_departure,
+      estimated_departure,
+    } = rowData;
+    // Variable to store the result
+    let dayDifference = "";
+
+    // Check if either date is empty
+    if (actual_departure && estimated_departure) {
+      // Convert to Date objects
+      const actualDate = new Date(actual_departure);
+      const estimatedDate = new Date(estimated_departure);
+
+      // Calculate the time difference in milliseconds
+      const timeDifference = actualDate - estimatedDate;
+
+      // Convert milliseconds to days
+      dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+    }
+
     const getDepartMessage = () => {
-      if (rowData.depart_diff === "") return null;
-      if (rowData.depart_diff === "0") return { color: "#00c500" };
-      if (rowData.depart_diff > 0) return { color: "red" };
-      if (rowData.depart_diff < 0) return { color: "#00c500" };
+      if (dayDifference === "") return null;
+      if (dayDifference === 0) return { color: "#00c500" };
+      if (dayDifference > 0) return { color: "red" };
+      if (dayDifference < 0) return { color: "#00c500" };
     };
 
     const departInfo = getDepartMessage();
     const EtdTitle = () => {
-      if (rowData.depart_diff === "") return null;
-      if (rowData.depart_diff === "0") return <div>Departed On-time</div>;
-      if (rowData.depart_diff > 0)
+      if (dayDifference === "") return null;
+      if (dayDifference === 0) return <div>Departed On-time</div>;
+      if (dayDifference > 0)
         return (
           <div>
             Departed Late{" "}
-            <span style={{ color: "red",fontWeight: "700" }}> (+{rowData.depart_diff} days)</span>
+            <span style={{ color: "red",fontWeight: "700" }}> (+{dayDifference} days)</span>
           </div>
         );
-      if (rowData.depart_diff < 0)
+      if (dayDifference < 0)
         return (
           <div>
             Departed Early{" "}
-            <span style={{ color: "#00c500", fontWeight: "700" }}>({rowData.depart_diff} days)</span>
+            <span style={{ color: "#00c500", fontWeight: "700" }}>({dayDifference} days)</span>
           </div>
         );
     };
@@ -415,34 +435,56 @@ const AllBookings = ({
   };
 
   const bodyTemplateEta = (rowData) => {
+    const {
+      actuval_arrival,
+      estimated_arrival,
+    } = rowData;
+    // Variable to store the result
+    let dayDifference = "";
+
+    // Check if either date is empty
+    if (actuval_arrival && estimated_arrival) {
+      // Convert to Date objects
+      const actualDate = new Date(actuval_arrival);
+      const estimatedDate = new Date(estimated_arrival);
+
+      // Calculate the time difference in milliseconds
+      const timeDifference = actualDate - estimatedDate;
+
+      // Convert milliseconds to days
+      dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+    }
+
+    console.log(dayDifference); // Will print the result or an empty string
+
     const getArrivalMessage = () => {
-      if (rowData.arrival_diff === "") return null;
-      if (rowData.arrival_diff === "0") return { color: "#00c500" };
-      if (rowData.arrival_diff > 0)
+      if (dayDifference === "") return null;
+      if (dayDifference === 0) return { color: "#00c500" };
+      if (dayDifference > 0)
         return { color: "red" };
-      if (rowData.arrival_diff < 0)
+      if (dayDifference < 0)
         return { color: "#00c500" };
     };
     const arrivalInfo = getArrivalMessage();
     const EtaTitle = () => {
-      if (rowData.arrival_diff === "") return null;
-      if (rowData.arrival_diff === "0") return <div>Arrived On-time</div>;
-      if (rowData.arrival_diff > 0)
+      if (dayDifference === "") return null;
+      if (dayDifference === 0) return <div>Arrived On-time</div>;
+      if (dayDifference > 0)
         return (
           <div>
             Arrived Late{" "}
             <span style={{ color: "red", fontWeight: "700" }}>
               {" "}
-              (+{rowData.arrival_diff} days)
+              (+{dayDifference} days)
             </span>
           </div>
         );
-      if (rowData.arrival_diff < 0)
+      if (dayDifference < 0)
         return (
           <div>
             Arrived Early{" "}
             <span style={{ color: "#00c500", fontWeight: "700" }}>
-              ({rowData.arrival_diff} days)
+              ({dayDifference} days)
             </span>
           </div>
         );

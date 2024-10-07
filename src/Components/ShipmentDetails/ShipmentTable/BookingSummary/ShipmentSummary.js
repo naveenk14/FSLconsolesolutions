@@ -213,20 +213,20 @@ const ShipmentSummary = () => {
                   })}
                 </div>
                 <div className="col">
-                  <p className="row_head">Value</p>
+                  <p className="row_head">Package Type</p>
                   {ViewBooking?.map((item) => {
                     return (
                       <p className="row_head2">
-                        {item?.value?.length <= 12 ? (
-                          item?.value
+                        {item?.package_type?.length <= 12 ? (
+                          item?.package_type
                         ) : (
                           <Tooltip
                             placement="topLeft"
                             zIndex={9999}
-                            title={item?.value}
+                            title={item?.package_type}
                           >
                             <span role="button">
-                              {item?.value
+                              {item?.package_type
                                 ?.slice(0, 13)
                                 ?.trim()
                                 ?.split("")
@@ -241,27 +241,33 @@ const ShipmentSummary = () => {
               </div>
               <div className="row  mx-0">
                 <div className="col">
-                  <p className="row_head">Package Type</p>
-                  {/* {ViewBooking?.map((item) => {
-                    <p className="row_head2">
-                      {packageType.length <= 15 ? (
-                        packageType
-                      ) : (
-                        <Tooltip placement="topLeft" title={packageType}>
-                          <span role="button">
-                            {packageType
-                              .slice(0, 16)
-                              .trim()
-                              .split("")
-                              .join("") + "..."}
-                          </span>
-                        </Tooltip>
-                      )}
-                    </p>;
-                  })} */}
+                  <p className="row_head">No of Units</p>
+                  {ViewBooking?.map((item) => {
+                    return (
+                      <p className="row_head2">
+                        {item?.no_of_units?.length <= 12 ? (
+                          item?.no_of_units
+                        ) : (
+                          <Tooltip
+                            placement="topLeft"
+                            zIndex={9999}
+                            title={item?.no_of_units}
+                          >
+                            <span role="button">
+                              {item?.no_of_units
+                                ?.slice(0, 13)
+                                ?.trim()
+                                ?.split("")
+                                ?.join("") + "..."}
+                            </span>
+                          </Tooltip>
+                        )}
+                      </p>
+                    );
+                  })}
                 </div>
                 <div className="col">
-                  <p className="row_head">No of Units</p>
+                  {/* <p className="row_head">No of Units</p>
                   {ViewBooking?.map((item) => {
                     return (
                       <p className="row_head2">
@@ -283,11 +289,11 @@ const ShipmentSummary = () => {
                         )}
                       </p>
                     );
-                  })}
+                  })} */}
                 </div>
                 <div className="col">
-                  <p className="row_head">Stackable Cargo</p>
-                  <p className="row_head2">Yes</p>
+                  {/* <p className="row_head">Stackable Cargo</p>
+                  <p className="row_head2">Yes</p> */}
                 </div>
               </div>
             </div>
@@ -349,7 +355,30 @@ const ShipmentSummary = () => {
                     </div> */}
                 <div className="col">
                   <p className="row_head">Cargo Ready Date</p>
-                  <p className="row_head2">20 May, 2023</p>
+                  {ViewBooking?.map((item) => {
+                    console.log(item)
+                    return (
+                      <p className="row_head2">
+                      {item?.["cargo_ready_date "]?.length <= 12 ? (
+                          item?.["cargo_ready_date "]
+                        ) : (
+                          <Tooltip
+                            placement="topLeft"
+                            zIndex={9999}
+                            title={item?.["cargo_ready_date "]}
+                          >
+                            <span role="button">
+                              {item?.["cargo_ready_date "]
+                                ?.slice(0, 13)
+                                ?.trim()
+                                ?.split("")
+                                ?.join("") + "..."}
+                            </span>
+                          </Tooltip>
+                        )}
+                      </p>
+                    );
+                  })}
                 </div>
                 <div className="col">
                   <p className="row_head">Hs Code</p>
@@ -555,30 +584,137 @@ const ShipmentSummary = () => {
                   <div className="row  mx-0">
                     <div className="col">
                       <p className="row_head">Import Clearance</p>
-                      <p className="row_head2">
-                        <u>Yes</u>
-                      </p>
+                      {ViewBooking?.map((item) => {
+                        return (
+                          <p className="row_head2">
+                            {item?.is_import_clearance?.length <= 12 ? (
+                              <u>{item?.is_import_clearance}</u>
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.is_import_clearance}
+                              >
+                                <span role="button">
+                                  {item?.is_import_clearance
+                                    ?.slice(0, 13)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
+                          </p>
+                        );
+                      })}
                     </div>
                     <div className="col">
                       <p className="row_head">Cargo Pickup</p>
-                      <p className="row_head2">
-                        <u>Yes</u>
-                      </p>
+                      {ViewBooking?.map((item) => {
+                        return (
+                          <p className="row_head2">
+                            {item?.cargo_pickup?.length <= 12 ? (
+                              <u>{item?.cargo_pickup}</u>
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.cargo_pickup}
+                              >
+                                <span role="button">
+                                  {item?.cargo_pickup
+                                    ?.slice(0, 13)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
+                          </p>
+                        );
+                      })}
                     </div>
                     <div className="col">
                       <p className="row_head">Cargo Insurance</p>
-                      <p className="row_head2">
-                        <u>No</u>
-                      </p>
+                      {ViewBooking?.map((item) => {
+                        return (
+                          <p className="row_head2">
+                            {item?.cargo_insurance?.length <= 12 ? (
+                              <u>{item?.cargo_insurance}</u>
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.cargo_insurance}
+                              >
+                                <span role="button">
+                                  {item?.cargo_insurance
+                                    ?.slice(0, 13)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
+                          </p>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="row  mx-0">
                     <div className="col">
                       <p className="row_head">Export Clearance</p>
-                      <p className="row_head2">
-                        <u>No</u>
-                      </p>
+                      {ViewBooking?.map((item) => {
+                        return (
+                          <p className="row_head2">
+                            {item?.is_export_clearance?.length <= 12 ? (
+                              <u>{item?.is_export_clearance}</u>
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.is_export_clearance}
+                              >
+                                <span role="button">
+                                  {item?.is_export_clearance
+                                    ?.slice(0, 13)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
+                          </p>
+                        );
+                      })}
                     </div>
+                    <div className="col">
+                      <p className="row_head">Door Delivery</p>
+                      {ViewBooking?.map((item) => {
+                        return (
+                          <p className="row_head2">
+                            {item?.door_delivery?.length <= 12 ? (
+                              <u>{item?.door_delivery}</u>
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.door_delivery}
+                              >
+                                <span role="button">
+                                  {item?.door_delivery
+                                    ?.slice(0, 13)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
+                          </p>
+                        );
+                      })}
+                    </div>
+                    <div className="col"></div>
                   </div>
                 </div>
               </div>
@@ -693,6 +829,7 @@ const ShipmentSummary = () => {
                   </p>
                 </div>
                 <TextArea
+                  value={ViewBooking?.spl_requirements}
                   rows={4}
                   maxLength={1000}
                   readOnly

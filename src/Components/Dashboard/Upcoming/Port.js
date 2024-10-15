@@ -12,7 +12,7 @@ import { CircularProgress, Box } from "@mui/material";
 import { Select, Menu } from "antd";
 import { CalendarOutlined, CaretDownOutlined } from "@ant-design/icons";
 import shipgif from '../../../assets/shiploadinggif.gif'
-import anchor from '../../../assets/sort.png'
+import anchor from '../../../assets/anchor.svg'
 
 const { Option } = Select;
 

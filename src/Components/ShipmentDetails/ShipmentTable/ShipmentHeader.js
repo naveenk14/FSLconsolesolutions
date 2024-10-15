@@ -163,6 +163,37 @@ const ShipmentHeader = ({ rowDatas }) => {
               {/* <div className="ship_section" style={{marginLeft:"6px",marginRight:"6px"}}> */}
               <div className="reference_row d-flex flex-row px-4">
                 <div className="me-5">
+                  <h6 className="me-2 m-0">Container No :</h6>
+                  {/* {
+                      ViewBooking?.map((item)=>{
+                        return <h6 className='m-0'>{item.booking_id}</h6>
+                      }
+                      )
+                    } */}
+                  <h6 className="m-0">
+                    TEMU4680848
+                    {/*4565655656*/}
+                    {/* {item?.container_no?.length <= 20 ? (
+                      item?.container_no
+                    ) : (
+                      <Tooltip
+                        placement="topLeft"
+                        zIndex={9999}
+                        title={item?.container_no}
+                      >
+                        <span role="button">
+                          {item?.container_no
+                            ?.slice(0, 20)
+                            .trim()
+                            .split("")
+                            .join("") + "..."}
+                        </span>
+                      </Tooltip>
+                    )} */}
+                  </h6>
+                </div>
+
+                <div className="me-5">
                   <h6 className="me-2 m-0">Shipment ID :</h6>
                   {/* {
                       ViewBooking?.map((item)=>{
@@ -208,7 +239,7 @@ const ShipmentHeader = ({ rowDatas }) => {
                       >
                         <span role="button">
                           {item?.hbl_number
-                            .slice(0, 20)
+                            ?.slice(0, 20)
                             .trim()
                             .split("")
                             .join("") + "..."}
@@ -294,7 +325,7 @@ const ShipmentHeader = ({ rowDatas }) => {
               </div>
               <div className="booking_row">
                 <div className="booking_content">
-                  <p className="m-0 mb-1">Booking Date</p>
+                  <p className="m-0 mb-1">Booking Dates</p>
                   <p className="m-0">{item.booked_on}</p>
                 </div>
                 <div className="booking_content">

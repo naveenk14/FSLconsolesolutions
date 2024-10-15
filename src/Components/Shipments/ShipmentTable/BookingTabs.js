@@ -20,10 +20,12 @@ import cal from "../../../assets/calVector.svg";
 import ScheduleDsrModal from "./DailyReport/DailyReportModal/ScheduleDsrModal";
 import { SaveDsrReqeust } from "../../../Redux/Actions/SaveDsrAction";
 import { toast } from "react-toastify";
+import { custom_data } from "./CustomData";
 
 function BookingTabs({ showText, setShowText, setShowmap }) {
   const [searchQuery] = useState("");
   const [data, setData] = useState([]);
+  console.log(data)
   const [schedulemodal, setSchedulemodal] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,8 +45,12 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
   const [scrollHeight, setscrollHeight] = useState("653px")
   const dispatch = useDispatch();
   const ShipmentData = useSelector((state) => state.Booking);
-  const bookingData = ShipmentData?.booking;
+  const bookingDatas = ShipmentData?.booking;
+  const bookingData = custom_data;
+  console.log("bookingData",bookingData)
+  console.log("bookingDatas",bookingDatas)
   const tabCount = ShipmentData?.booking?.statuswise_count
+  console.log(tabCount,bookingData)
   const [popoverVisible, setPopoverVisible] = useState(false); // State to control Popover visibility
   const [dsrpopoverVisible, setDsrPopoverVisible] = useState(false); // State to control Popover visibility
   // const saveSuccess = useSelector((state) => state?.SaveDsr?.savedsr?.Response);
@@ -346,27 +352,27 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
     window.scrollTo(0, 0);
   }, []);
   const tabs = [
-    { label: `All Bookings (${schedule?.all ? schedule?.all : 0})`, key: "1" },
+    { label: `Export (${schedule?.all ? schedule?.all : 0})`, key: "1" },
     {
-      label: `Booked (${schedule?.booked ? schedule?.booked : 0})`,
+      label: `Import (${schedule?.booked ? schedule?.booked : 0})`,
       key: "2",
     },
-    {
-      label: `In-Transit (${schedule?.in_transit ? schedule?.in_transit : 0})`,
-      key: "3",
-    },
-    {
-      label: `Arrived (${schedule?.arrived ? schedule?.arrived : 0})`,
-      key: "4",
-    },
-    {
-      label: `Delivered (${schedule?.delivered ? schedule?.delivered : 0})`,
-      key: "5",
-    },
-    {
-      label: `Cancelled (${schedule?.cancelled ? schedule?.cancelled : 0})`,
-      key: "6",
-    },
+    // {
+    //   label: `In-Transit (${schedule?.in_transit ? schedule?.in_transit : 0})`,
+    //   key: "3",
+    // },
+    // {
+    //   label: `Arrived (${schedule?.arrived ? schedule?.arrived : 0})`,
+    //   key: "4",
+    // },
+    // {
+    //   label: `Delivered (${schedule?.delivered ? schedule?.delivered : 0})`,
+    //   key: "5",
+    // },
+    // {
+    //   label: `Cancelled (${schedule?.cancelled ? schedule?.cancelled : 0})`,
+    //   key: "6",
+    // },
   ];
   return (
     <div

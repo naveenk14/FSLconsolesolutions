@@ -24,6 +24,7 @@ import "../../Dashboard/ShipmentHistory/ShipmentHistory.css";
 import shipgif from "../../../assets/shiploadinggif.gif";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { custom_data } from "./CustomData";
 
 const AllBookings = ({
   filterData,
@@ -245,6 +246,7 @@ const AllBookings = ({
   };
 
   const actionBodyTemplate = (rowData) => {
+    console.log(rowData)
     let buttonLabel;
     let btnClass;
     if (rowData.action === "Track") {
@@ -297,10 +299,10 @@ const AllBookings = ({
     return (
       <div style={{ textAlign: "start" }}>
         <span className="">
-          {rowData?.id?.length <= 20 ? (
-            rowData?.id
+          {rowData?.container_id?.length <= 20 ? (
+            rowData?.container_id
           ) : (
-            <Tooltip placement="topLeft" title={rowData?.id}>
+            <Tooltip placement="topLeft" title={rowData?.container_id}>
               <span role="button">
                 {rowData?.id?.slice(0, 20)?.trim()?.split(" ")?.join("") + ".."}
               </span>
@@ -313,7 +315,7 @@ const AllBookings = ({
   const originBodyTemplate = (rowData) => {
     return (
       <div className="origin-cell" style={{ textAlign: "start" }}>
-        <CountryFlag countryCode={rowData?.origin_countrycode} />
+        <CountryFlag styleData={{boxShadow: rowData?.origin_countrycode === "SG" ?"1px 1px 5px 1px":""}}  countryCode={rowData?.origin_countrycode} />
         <span
           style={{
             paddingLeft: "8px",
@@ -818,13 +820,51 @@ const AllBookings = ({
               style={{ fontFamily: "Roboto", cursor: "pointer" }}
               className=" d-flex"
             >
-              Shipment ID
+              {/* Shipment ID */}Container
               {MultiSelectFilter("id", ShipId, tblFilter.id, "Shipment ID")}
               {sort("id")}
             </span>
           }
           body={shipmentTemplateFilterData}
           style={{ paddingRight: "10px", width: "170px", paddingLeft: 10 }}
+        ></Column>
+        
+
+        <Column
+          field="origin"
+          header={
+            <span
+              style={{ fontFamily: "Roboto", cursor: "pointer" }}
+              className="d-flex"
+            >
+              {/* Origin */}Origin
+              {MultiSelectFilter("origin", Org_, tblFilter.origin, "Origin")}
+              {sort("origin")}
+            </span>
+          }
+          body={originBodyTemplate}
+          headerClassName="custom-header"
+          style={{  paddingLeft: "10px", paddingRight: "10px" }}
+        ></Column>
+        <Column
+          field="destination"
+          header={
+            <span
+              className=" d-flex"
+              style={{ fontFamily: "Roboto", cursor: "pointer" }}
+            >
+              {/* Destination */}Destination
+              {MultiSelectFilter(
+                "destination",
+                dest_,
+                tblFilter.destination,
+                "Destination"
+              )}
+              {sort("destination")}
+            </span>
+          }
+          body={destinationBodyTemplate}
+          style={{ paddingLeft: "10px", paddingRight: "10px" }}
         ></Column>
         <Column
           field="order_no"
@@ -833,7 +873,7 @@ const AllBookings = ({
               style={{ fontFamily: "Roboto", cursor: "pointer" }}
               className="py-3 d-flex "
             >
-              Order No
+              {/* Order No */}LoadingDate
               {MultiSelectFilter(
                 "order_no",
                 orderId_,
@@ -854,56 +894,18 @@ const AllBookings = ({
               style={{ fontFamily: "Roboto", cursor: "pointer" }}
               className=" d-flex"
             >
-              Mode
+              {/* Mode */}Departure
               {MultiSelectFilter("mode", Mode_, tblFilter.mode, "Mode")}
               {sort("mode")}
             </span>
           }
           style={{ paddingLeft: "10px", paddingRight: "10px" }}
         ></Column>
-
-        <Column
-          field="origin"
-          header={
-            <span
-              style={{ fontFamily: "Roboto", cursor: "pointer" }}
-              className="d-flex"
-            >
-              Origin
-              {MultiSelectFilter("origin", Org_, tblFilter.origin, "Origin")}
-              {sort("origin")}
-            </span>
-          }
-          body={originBodyTemplate}
-          headerClassName="custom-header"
-          style={{ width: "185px", paddingLeft: "10px", paddingRight: "10px" }}
-        ></Column>
-        <Column
-          field="destination"
-          header={
-            <span
-              className=" d-flex"
-              style={{ fontFamily: "Roboto", cursor: "pointer" }}
-            >
-              Destination
-              {MultiSelectFilter(
-                "destination",
-                dest_,
-                tblFilter.destination,
-                "Destination"
-              )}
-              {sort("destination")}
-            </span>
-          }
-          body={destinationBodyTemplate}
-          style={{ width: "185px", paddingLeft: "10px", paddingRight: "10px" }}
-        ></Column>
-
         <Column
           field="etd_atd"
           header={
             <span className=" d-flex" style={{ position: "relative" }}>
-              ETD/ATD
+              {/* ETD/ATD */}Arrival
               {MultiSelectFilter("etd_atd", etd_, tblFilter.etd_atd, "ETD/ATD")}
               {sort("etd_atd")}
             </span>
@@ -916,7 +918,7 @@ const AllBookings = ({
           field="eta_ata"
           header={
             <span className=" d-flex">
-              ETA/ATA
+              {/* ETA/ATA */}Unloading Date
               {MultiSelectFilter("eta_ata", eta_, tblFilter.eta_ata, "ETA/ATA")}
               {sort("eta_ata")}
             </span>

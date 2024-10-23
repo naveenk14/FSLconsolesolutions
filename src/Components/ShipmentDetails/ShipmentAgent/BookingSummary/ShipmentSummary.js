@@ -537,7 +537,7 @@ const ShipmentSummary = () => {
 
         {ViewBooking?.map((item) => {
           return (
-            <div className="col-5 mb-3">
+            <div className="col-5 p-0 mb-3">
               <div className="card h-100">
                 <div className="card-header">
                   <p className="Header">Parties</p>

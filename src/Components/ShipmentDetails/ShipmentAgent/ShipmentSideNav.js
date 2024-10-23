@@ -457,6 +457,7 @@ const ShipmentSidNav = () => {
       style={{
         width: "100%",
         maxWidth: "290px",
+        background: "#F8FAFC",
       }}
     >
       <Tabs

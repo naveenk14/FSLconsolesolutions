@@ -54,7 +54,7 @@ export const SearchHeader = ({ bookingData }) => {
   };
   return (
     <>
-      <Row justify="space-between" className="w-full mb-3">
+      <Row justify="space-between" className="w-full mb-3 mt-5">
         <Col>
           <Input
             placeholder="Search shipment by PO/ Booking / HBL / Invoice Number"

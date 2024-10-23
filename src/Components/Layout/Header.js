@@ -296,7 +296,7 @@ const Header = ({ setShowText, setShowmap, setShowReselt }) => {
       >
         <div
           style={{
-            border: "1px solid #D1D9D3",
+            // border: "1px solid #D1D9D3",
             borderRadius: "20px",
             padding: "8px 12px",
             width: "70px",
@@ -306,13 +306,13 @@ const Header = ({ setShowText, setShowmap, setShowReselt }) => {
           className="d-flex justify-content-end align-items-center"
           // onClick={() => setView(!view)}
         >
-          <Bell
+          {/* <Bell
             width="25px"
             height="25px"
             style={{ position: "absolute", left: "4px", cursor: "pointer" }}
             alt="Bell"
             onClick={() => setView(!view)}
-          />
+          /> */}
 
           <div
             style={{
@@ -323,7 +323,7 @@ const Header = ({ setShowText, setShowmap, setShowReselt }) => {
               alignItems: "center",
             }}
           >
-            <Typography
+            {/* <Typography
               style={{
                 fontSize: "12px",
                 fontWeight: "400",
@@ -337,7 +337,7 @@ const Header = ({ setShowText, setShowmap, setShowReselt }) => {
               }}
             >
               3
-            </Typography>
+            </Typography> */}
             <Sidebar
               header={customHeader}
               visible={view}

@@ -840,7 +840,7 @@ const AllBookings = ({
             </span>
           }
           body={shipmentTemplateFilterData}
-          style={{ paddingRight: "10px", width: "170px", paddingLeft: 10 }}
+          style={{ paddingRight: "10px", width: "170px", paddingLeft: "20px" }}
         ></Column>
 
         <Column
@@ -857,7 +857,7 @@ const AllBookings = ({
           }
           body={originBodyTemplate}
           headerClassName="custom-header"
-          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+          style={{ paddingLeft: "20px", paddingRight: "12px" }}
         ></Column>
         <Column
           field="destination"
@@ -877,7 +877,7 @@ const AllBookings = ({
             </span>
           }
           body={destinationBodyTemplate}
-          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+          // style={{  paddingRight: "0px" }}
         ></Column>
         <Column
           field="order_no"
@@ -897,7 +897,7 @@ const AllBookings = ({
             </span>
           }
           body={shipmentTemplateId}
-          style={{ paddingLeft: "10px", paddingRight: "10px", width: "185px" }}
+          // style={{ paddingRight: "0px"}}
           headerClassName="custom-header"
         ></Column>
         <Column
@@ -912,7 +912,7 @@ const AllBookings = ({
               {sort("mode")}
             </span>
           }
-          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+          style={{ paddingRight: "14px" }}
         ></Column>
         <Column
           field="etd_atd"
@@ -925,7 +925,7 @@ const AllBookings = ({
           }
           body={bodyTemplate}
           bodyClassName="custom-cell"
-          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+          style={{ paddingRight: "14px" }}
         ></Column>
         <Column
           field="eta_ata"
@@ -938,7 +938,7 @@ const AllBookings = ({
           }
           body={bodyTemplateEta}
           bodyClassName="custom-cell"
-          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+          // style={{ paddingRight: "5px" }}
         ></Column>
         <Column
           field="status"
@@ -950,9 +950,7 @@ const AllBookings = ({
             </span>
           }
           headerStyle={{
-            width: "130px",
-            paddingLeft: "10px",
-            paddingRight: "10px",
+            // width: "130px",
           }}
           bodyClassName={(rowData) =>
             rowData.status === "Booking In Progress"
@@ -960,7 +958,7 @@ const AllBookings = ({
               : "booked-cell "
           }
           className="text-start my-3"
-          style={{ marginLeft: "10px", marginRight: "10px" }}
+          style={{ marginRight: "10px" }}
         ></Column>
         <Column
           field="action"
@@ -985,9 +983,9 @@ const AllBookings = ({
         </span>
       )}
 
-      {/* <span role="button"  className="show-more" onClick={()=>{return (setshowAllData(!showAllData),setscrollHeight((prev)=>prev==="653px"?"1243px":"653px"))}} >
+      <span role="button"  className="show-more" onClick={()=>{return (setshowAllData(!showAllData),setscrollHeight((prev)=>prev==="653px"?"1243px":"653px"))}} >
             {showAllData ? "Show Less" : "Show More"}
-        </span> */}
+        </span>
       {/* <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

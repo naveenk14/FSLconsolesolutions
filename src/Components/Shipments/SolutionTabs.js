@@ -9,7 +9,7 @@ import globBlack from "../../assets/NewGlobeB.svg";
 import listGray from "../../assets/NewListG.svg";
 import { Tooltip } from "antd";
 
-const ShipmentsHome = ({
+const SolutionTabs = ({
   showmap,
   setShowmap,
   showText,
@@ -88,7 +88,7 @@ const ShipmentsHome = ({
           style={{ width: "1255px", marginTop: "-177px" }}
           className="mb-4 mx-auto"
         >
-          <BookingTabs showText={showText} setShowText={setShowText} />
+          {/* <BookingTabs showText={showText} setShowText={setShowText} /> */}
         </div>
       ) : (
         <div
@@ -108,10 +108,10 @@ const ShipmentsHome = ({
         ) : (
           <div style={{ height: "90v" }}>
             {" "}
-            {/* <UpcomingSailings
-              setOriginPort={setOriginPort} 
+            <UpcomingSailings
+              setOriginPort={setOriginPort}
               setDestPort={setDestPort}
-            /> */}
+            />
           </div>
         )}
       </div>
@@ -119,4 +119,4 @@ const ShipmentsHome = ({
   );
 };
 
-export default ShipmentsHome;
+export default SolutionTabs;

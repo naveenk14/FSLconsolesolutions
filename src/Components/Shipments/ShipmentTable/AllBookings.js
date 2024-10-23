@@ -246,7 +246,7 @@ const AllBookings = ({
   };
 
   const actionBodyTemplate = (rowData) => {
-    console.log(rowData)
+    console.log(rowData);
     let buttonLabel;
     let btnClass;
     if (rowData.action === "Track") {
@@ -315,7 +315,15 @@ const AllBookings = ({
   const originBodyTemplate = (rowData) => {
     return (
       <div className="origin-cell" style={{ textAlign: "start" }}>
-        <CountryFlag styleData={{boxShadow: rowData?.origin_countrycode === "SG" ?"1px 1px 5px 1px":""}}  countryCode={rowData?.origin_countrycode} />
+        <CountryFlag
+          styleData={{
+            boxShadow:
+              rowData?.origin_countrycode === "SG"
+                ? "1px 1px 5px rgba(0,0,0,0.3"
+                : "",
+          }}
+          countryCode={rowData?.origin_countrycode}
+        />
         <span
           style={{
             paddingLeft: "8px",
@@ -363,10 +371,7 @@ const AllBookings = ({
     );
   };
   const bodyTemplate = (rowData) => {
-    const {
-      actual_departure,
-      estimated_departure,
-    } = rowData;
+    const { actual_departure, estimated_departure } = rowData;
     // Variable to store the result
     let dayDifference = "";
 
@@ -398,20 +403,30 @@ const AllBookings = ({
         return (
           <div>
             Departed Late{" "}
-            <span style={{ color: "red",fontWeight: "700" }}> (+{dayDifference} days)</span>
+            <span style={{ color: "red", fontWeight: "700" }}>
+              {" "}
+              (+{dayDifference} days)
+            </span>
           </div>
         );
       if (dayDifference < 0)
         return (
           <div>
             Departed Early{" "}
-            <span style={{ color: "#00c500", fontWeight: "700" }}>({dayDifference} days)</span>
+            <span style={{ color: "#00c500", fontWeight: "700" }}>
+              ({dayDifference} days)
+            </span>
           </div>
         );
     };
     return (
       <div className="message">
-        <span style={{ color: departInfo ? departInfo.color : "" , fontWeight: "500"}}>
+        <span
+          style={{
+            color: departInfo ? departInfo.color : "",
+            fontWeight: "500",
+          }}
+        >
           {departInfo ? (
             <Tooltip
               placement="topLeft"
@@ -437,10 +452,7 @@ const AllBookings = ({
   };
 
   const bodyTemplateEta = (rowData) => {
-    const {
-      actuval_arrival,
-      estimated_arrival,
-    } = rowData;
+    const { actuval_arrival, estimated_arrival } = rowData;
     // Variable to store the result
     let dayDifference = "";
 
@@ -462,10 +474,8 @@ const AllBookings = ({
     const getArrivalMessage = () => {
       if (dayDifference === "") return null;
       if (dayDifference === 0) return { color: "#00c500" };
-      if (dayDifference > 0)
-        return { color: "red" };
-      if (dayDifference < 0)
-        return { color: "#00c500" };
+      if (dayDifference > 0) return { color: "red" };
+      if (dayDifference < 0) return { color: "#00c500" };
     };
     const arrivalInfo = getArrivalMessage();
     const EtaTitle = () => {
@@ -493,7 +503,12 @@ const AllBookings = ({
     };
     return (
       <div className="message">
-        <span style={{ color: arrivalInfo ? arrivalInfo.color : "",fontWeight: "500"}}>
+        <span
+          style={{
+            color: arrivalInfo ? arrivalInfo.color : "",
+            fontWeight: "500",
+          }}
+        >
           {arrivalInfo ? (
             <Tooltip
               placement="topLeft"
@@ -501,8 +516,8 @@ const AllBookings = ({
                 <span>
                   <div style={{ fontSize: "13px" }}>{EtaTitle()}</div>
                   <div style={{ fontSize: "10px" }}>
-                  Estimated Arrival : {rowData.estimated_arrival} <br />
-                  Actual Arrival : {rowData.actuval_arrival}
+                    Estimated Arrival : {rowData.estimated_arrival} <br />
+                    Actual Arrival : {rowData.actuval_arrival}
                   </div>
                 </span>
               }
@@ -639,7 +654,7 @@ const AllBookings = ({
           ref={popoverRef}
           style={{
             position: "absolute",
-            top:"0",
+            top: "0",
             width: "100%",
             background: "white",
             zIndex: "10",
@@ -702,7 +717,7 @@ const AllBookings = ({
                 className="px-2 py-1"
                 rounded
               >
-                <div style={{position: "relative"}}>
+                <div style={{ position: "relative" }}>
                   {field === "order_no" ? "Order No" : ""}
                   {field === "id" ? "Shipment Id" : ""}
                   {field === "mode" ? "Mode" : ""}
@@ -718,7 +733,7 @@ const AllBookings = ({
                     <span>
                       {filterValues[0]}&nbsp;
                       <Button
-                        style={{backgroundColor:"red",border:"none"}}
+                        style={{ backgroundColor: "red", border: "none" }}
                         variant="contained"
                         onClick={() => handleClick(field)}
                       >
@@ -728,7 +743,7 @@ const AllBookings = ({
                         />
                       </Button>
                       {popoverVisible &&
-                        (field === selectfield) &&
+                        field === selectfield &&
                         renderTags(field, filterValues)}
                     </span>
                   )}
@@ -811,7 +826,6 @@ const AllBookings = ({
         } scrolloftable`}
         // style={{ height: "653px", overflowY: "auto", marginBottom: "10px" }}
         emptyMessage={noData()}
-
       >
         <Column
           field="id"
@@ -828,7 +842,6 @@ const AllBookings = ({
           body={shipmentTemplateFilterData}
           style={{ paddingRight: "10px", width: "170px", paddingLeft: 10 }}
         ></Column>
-        
 
         <Column
           field="origin"
@@ -844,7 +857,7 @@ const AllBookings = ({
           }
           body={originBodyTemplate}
           headerClassName="custom-header"
-          style={{  paddingLeft: "10px", paddingRight: "10px" }}
+          style={{ paddingLeft: "10px", paddingRight: "10px" }}
         ></Column>
         <Column
           field="destination"

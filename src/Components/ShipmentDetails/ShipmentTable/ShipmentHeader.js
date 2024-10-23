@@ -94,7 +94,7 @@ const ShipmentHeader = ({ rowDatas }) => {
   const stepbox = useRef(null);
 
   useEffect(() => {
-    if (fileteredMilestone[0]?.milestones.length > 7) {
+    if (fileteredMilestone?.[0]?.milestones.length > 7) {
       if (getlastStatus) {
         stepbox.current.scrollLeft = getlastStatus[0]?.offsetLeft;
       } else if (getlastCompleteStatus) {
@@ -172,7 +172,6 @@ const ShipmentHeader = ({ rowDatas }) => {
                     } */}
                   <h6 className="m-0">
                     TEMU4680848
-                    {/*4565655656*/}
                     {/* {item?.container_no?.length <= 20 ? (
                       item?.container_no
                     ) : (

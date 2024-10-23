@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ShipmentSummary.css";
 import { Tooltip } from "antd";
-import Modal from "../Modal/Modal";
-import ContainerDetailsModal from "../Modal/ContainerDetailsModal";
+import Modal from "../../ShipmentTable/Modal/Modal";
+import ContainerDetailsModal from "../../ShipmentTable/Modal/ContainerDetailsModal";
 import TextArea from "antd/es/input/TextArea";
 import { useSelector } from "react-redux";
 import { Dialog, DialogContent } from "@mui/material";
@@ -151,7 +151,7 @@ const ShipmentSummary = () => {
       {/* {ViewBooking?.map((item) => { */}
       {/* return ( */}
       <div className="row mx-0">
-        <div className="col-6 mb-3">
+        {/* <div className="col-6 mb-3">
           <div className="card h-100">
             <div className="card-header">
               <p className="Header">Cargo Details</p>
@@ -267,12 +267,13 @@ const ShipmentSummary = () => {
                     );
                   })}
                 </div>
+               
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* <div className="col-6 mb-3">
+        <div className="col-7 mb-3">
           <div className="card h-100">
             <div className="card-header">
               <p className="Header">Shipment Details</p>
@@ -368,7 +369,7 @@ const ShipmentSummary = () => {
                 </div>
               </div>
 
-             
+              {/* Second row */}
               <div className="row">
                 <div className="col">
                   <p className="row_head mb-2">Cargo Type</p>
@@ -397,7 +398,8 @@ const ShipmentSummary = () => {
                   </p>
                   {ViewBooking?.map((item, index) => (
                     <p key={index} className="row_head2">
-                      {item?.cargo_ready_date?.length <= 12 ? (
+                      8 Sep, 2024
+                      {/* {item?.cargo_ready_date?.length <= 12 ? (
                         item?.cargo_ready_date
                       ) : (
                         <Tooltip
@@ -410,7 +412,7 @@ const ShipmentSummary = () => {
                               "..."}
                           </span>
                         </Tooltip>
-                      )}
+                      )} */}
                     </p>
                   ))}
                 </div>
@@ -419,6 +421,7 @@ const ShipmentSummary = () => {
                   <p className="row_head mb-2">HS Code</p>
                   {ViewBooking?.map((item, index) => (
                     <p key={index} className="row_head2">
+                      2768
                       {item?.hs_code?.length <= 12 ? (
                         item?.hs_code
                       ) : (
@@ -435,9 +438,31 @@ const ShipmentSummary = () => {
                     </p>
                   ))}
                 </div>
+
+                <div className="col">
+                  <p className="row_head mb-2">Seal Number</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      BS964567
+                      {/* {item?.seal_number?.length <= 12 ? (
+                        item?.seal_number
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.seal_number}
+                        >
+                          <span role="button">
+                            {item?.seal_number?.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )} */}
+                    </p>
+                  ))}
+                </div>
               </div>
 
-             
+              {/* Conditional row based on product */}
               {ViewBooking?.map((item, index) =>
                 item?.product !== "AIR" ? (
                   <div className="row" key={index}>
@@ -470,6 +495,7 @@ const ShipmentSummary = () => {
                       {newContainerArray?.length > 0 ? (
                         newContainerArray.map((containerItem, i) => (
                           <p key={i} className="row_head2">
+                            HLBU1046823
                             {containerItem?.container}
                           </p>
                         ))
@@ -478,7 +504,7 @@ const ShipmentSummary = () => {
                       )}
                     </div>
 
-                    <div className="col">
+                    {/* <div className="col">
                       <p className="row_head mb-2">Seal Number</p>
                       <p className="row_head2">
                         {item?.seal_number ? (
@@ -499,202 +525,19 @@ const ShipmentSummary = () => {
                           <span className="sample-data">BS964567</span>
                         )}
                       </p>
-                    </div>
+                    </div> */}
+                    <div className="col"></div>
+                    <div className="col"></div>
                   </div>
                 ) : null
               )}
             </div>
           </div>
-        </div> */}
-
-        <div className="col-6 mb-3">
-          <div className="card h-100">
-            <div className="card-header">
-              <p className="Header">Shipment Details</p>
-            </div>
-            <div className="card-body">
-              <div className="row  mx-0">
-                <div className="col">
-                  <p className="row_head">Cargo Type</p>
-                  {ViewBooking?.map((item) => {
-                    return (
-                      <p className="row_head2">
-                        {item?.cargo_type?.length <= 15 ? (
-                          item?.cargo_type
-                        ) : (
-                          <Tooltip
-                            placement="topLeft"
-                            zIndex={9999}
-                            title={item?.cargo_type}
-                          >
-                            <span role="button">
-                              {item?.cargo_type
-                                ?.slice(0, 16)
-                                ?.trim()
-                                ?.split("")
-                                ?.join("") + "..."}
-                            </span>
-                          </Tooltip>
-                        )}
-                      </p>
-                    );
-                  })}
-                </div>
-                {/* <div className="col">
-                      <p className="row_head">Commodity Name</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.commodity_name.length <= 15 ? (
-                              item?.commodity_name
-                            ) : (
-                              <Tooltip placement="topLeft" zIndex={9999} title={item?.commodity_name}>
-                                <span role="button">
-                                  {item?.commodity_name.slice(0, 16)
-                                    .trim()
-                                    .split("")
-                                    .join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>)
-                        })}
-                  
-                    </div> */}
-                <div className="col">
-                  <p className="row_head">Cargo Ready Date</p>
-                  {ViewBooking?.map((item) => {
-                    console.log(item);
-                    return (
-                      <p className="row_head2">
-                        {item?.["cargo_ready_date "]?.length <= 12 ? (
-                          item?.["cargo_ready_date "]
-                        ) : (
-                          <Tooltip
-                            placement="topLeft"
-                            zIndex={9999}
-                            title={item?.["cargo_ready_date "]}
-                          >
-                            <span role="button">
-                              {item?.["cargo_ready_date "]
-                                ?.slice(0, 13)
-                                ?.trim()
-                                ?.split("")
-                                ?.join("") + "..."}
-                            </span>
-                          </Tooltip>
-                        )}
-                      </p>
-                    );
-                  })}
-                </div>
-                <div className="col">
-                  <p className="row_head">Hs Code</p>
-                  {ViewBooking?.map((item) => {
-                    return (
-                      <p className="row_head2">
-                        {item?.hs_code.length <= 12 ? (
-                          item?.hs_code
-                        ) : (
-                          <Tooltip
-                            placement="topLeft"
-                            zIndex={9999}
-                            title={item?.hs_code}
-                          >
-                            <span role="button">
-                              {item?.hs_code
-                                ?.slice(0, 13)
-                                ?.trim()
-                                ?.split("")
-                                ?.join("") + "..."}
-                            </span>
-                          </Tooltip>
-                        )}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
-              {ViewBooking?.map((item) => {
-                return item?.product !== "AIR" ? (
-                  <div className="row  mx-0">
-                    <div className="col">
-                      <p className="row_head">No of Containers</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.no_of_containers.length <= 40 ? (
-                              item?.no_of_containers
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.no_of_containers}
-                              >
-                                <span role="button">
-                                  {item?.no_of_containers
-                                    ?.slice(0, 41)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <div className="col">
-                      <p className="row_head">Container Details</p>
-                      {newContainerArray?.length <= 1 ? (
-                        <>
-                          {newContainerArray.map((item, i) => {
-                            return (
-                              <p key={i} className="row_head2">
-                                {item?.container}
-                              </p>
-                            );
-                          })}
-                        </>
-                      ) : (
-                        <>
-                          {MinContainer?.map((item, i) => (
-                            <p
-                              key={i}
-                              role="button"
-                              className="container_extrapara p-0"
-                              onClick={() => handleContOpen()}
-                            >
-                              {item?.container}...
-                            </p>
-                          ))}
-                          {/* <span
-                        role="button"
-                        style={{ color: "#00c4ff" }}
-                        className="container_extrapara"
-                        onClick={() => handleContOpen()}
-                      >
-                        Show more...
-                      </span> */}
-                        </>
-                      )}
-                    </div>
-                    <div className="col"></div>
-                  </div>
-                ) : (
-                  ""
-                );
-              })}
-            </div>
-          </div>
         </div>
-      </div>
-      {/* ); */}
-      {/* })} */}
-      {ViewBooking?.map((item) => {
-        return (
-          <div className="row mt-3  mx-0 Parties_row">
-            <div className="col-6 mb-3">
+
+        {ViewBooking?.map((item) => {
+          return (
+            <div className="col-5 mb-3">
               <div className="card h-100">
                 <div className="card-header">
                   <p className="Header">Parties</p>
@@ -791,154 +634,10 @@ const ShipmentSummary = () => {
                 </div>
               </div>
             </div>
-            <div className="col-6 mb-3">
-              <div className="card h-100">
-                <div className="card-header">
-                  <p className="Header">Value Added Services</p>
-                </div>
-                <div className="card-body">
-                  <div className="row  mx-0">
-                    <div className="col">
-                      <p className="row_head">Import Clearance</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.is_import_clearance?.length <= 12 ? (
-                              // <p>{item?.is_import_clearance ? "No" : ""}</p>
-                              <p>{!item?.is_import_clearance ? "No" : ""}</p>
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.is_import_clearance}
-                              >
-                                <span role="button">
-                                  {item?.is_import_clearance
-                                    ?.slice(0, 13)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <div className="col">
-                      <p className="row_head">Cargo Pickup</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.cargo_pickup?.length <= 12 ? (
-                              <p>{item?.cargo_pickup}</p>
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.cargo_pickup}
-                              >
-                                <span role="button">
-                                  {item?.cargo_pickup
-                                    ?.slice(0, 13)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <div className="col">
-                      <p className="row_head">Cargo Insurance</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.cargo_insurance?.length <= 12 ? (
-                              <p>{item?.cargo_insurance}</p>
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.cargo_insurance}
-                              >
-                                <span role="button">
-                                  {item?.cargo_insurance
-                                    ?.slice(0, 13)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="row  mx-0">
-                    <div className="col">
-                      <p className="row_head">Export Clearance</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.is_export_clearance?.length <= 12 ? (
-                              <p>{item?.is_export_clearance}</p>
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.is_export_clearance}
-                              >
-                                <span role="button">
-                                  {item?.is_export_clearance
-                                    ?.slice(0, 13)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <div className="col">
-                      <p className="row_head">Door Delivery</p>
-                      {ViewBooking?.map((item) => {
-                        return (
-                          <p className="row_head2">
-                            {item?.door_delivery?.length <= 12 ? (
-                              <p>{item?.door_delivery}</p>
-                            ) : (
-                              <Tooltip
-                                placement="topLeft"
-                                zIndex={9999}
-                                title={item?.door_delivery}
-                              >
-                                <span role="button">
-                                  {item?.door_delivery
-                                    ?.slice(0, 13)
-                                    ?.trim()
-                                    ?.split("")
-                                    ?.join("") + "..."}
-                                </span>
-                              </Tooltip>
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <div className="col"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
       <div className="row mt-3 mx-0">
         <div className="col">
           <div className="card h-100">
@@ -947,8 +646,18 @@ const ShipmentSummary = () => {
             </div>
             <div
               className="card-body"
-              style={{ height: "160px", overflow: "auto" }}
+              style={{
+                height: "112px",
+                overflow: "auto",
+                fontSize: "15px",
+                fontWeight: "500",
+                lineHeight: "22px",
+                letterSpacing: "1%",
+              }}
             >
+              Pallets Solenoid Viz. Trip Solenoid 220vdc To Drg. No. D2710043
+              Item No.1 Rev.02 Hs Code85351000 Invoice No. 92006111 Date
+              29.08.2024 Net Wt342.000 Kgs Sb No3696299 Dt02-Sep-24
               {/* {newContainerArray.length <= 4 ? (
                 <>
                   {newContainerArray.map((item,i) => {
@@ -993,7 +702,6 @@ const ShipmentSummary = () => {
                   </p>
                 );
               })} */}
-
               {ViewBooking?.map((item) => {
                 return <p className="container_para">{item?.commodity_name}</p>;
               })}
@@ -1009,16 +717,15 @@ const ShipmentSummary = () => {
               <p className="Header">Special Requirements</p>
             </div>
             <div className="card-body">
-              {/* {  
-                  <p className='container_para'>{requirementDescription}</p>
-              } */}
+              {/* {<p className="container_para">{requirementDescription}</p>} */}
+              {<p className="container_para">No records to display</p>}
 
-              <div
+              {/* <div
                 className="requirement_section"
                 style={{ padding: "0px 13px" }}
               >
                 <div className="textarea_description d-flex justify-content-end">
-                  {/* <p
+                  <p
                     className=""
                     style={{
                       fontWeight: "500",
@@ -1030,7 +737,7 @@ const ShipmentSummary = () => {
                     }}
                   >
                     Tell us more about your requirements
-                  </p> */}
+                  </p>
                   <p
                     className="m-0"
                     style={{
@@ -1052,7 +759,7 @@ const ShipmentSummary = () => {
                   onChange={(e) => setTextInput(e.target.value)}
                   style={{ pointerEvents: "none" }}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

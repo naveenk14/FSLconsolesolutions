@@ -193,71 +193,71 @@ const ShipmentBase = ({ open, close, rowData }) => {
 
   const [vesselmodalopen, setVesselmodalopen] = useState(false);
 
-  const shipmentData = [
-    {
-      id: "BIPAQA2407422L",
-      status: "Import",
-      from: "Singapore",
-      to: "Jebel Ali",
-      countryCode: "IN",
-      flagTo: "AE",
-    },
-    {
-      id: "S00092298",
-      status: "Transshipment",
-      from: "Singapore",
-      to: "Riyadh",
-      countryCode: "IN",
-      flagTo: "SA",
-    },
-    {
-      id: "BIPJEB2407415L",
-      status: "Transshipment",
-      from: "Singapore",
-      to: "Aqaba",
-      countryCode: "IN",
-      flagTo: "SE",
-    },
-    {
-      id: "SEJEA24080291-03",
-      status: "Transshipment",
-      from: "Singapore",
-      to: "Mombasa",
-      countryCode: "IN",
-      flagTo: "SE",
-    },
-    {
-      id: "BIPAQA2407422M", // Ensure unique IDs
-      status: "Import",
-      from: "Singapore",
-      to: "Jebel Ali",
-      countryCode: "IN",
-      flagTo: "SE",
-    },
-    {
-      id: "BIPAQA2407422", // Ensure unique IDs
-      status: "Import",
-      from: "Singapore",
-      to: "Jebel Ali",
-      countryCode: "IN",
-      flagTo: "SE",
-    },
-  ];
+  // const shipmentData = [
+  //   {
+  //     id: "BIPAQA2407422L",
+  //     status: "Import",
+  //     from: "Singapore",
+  //     to: "Jebel Ali",
+  //     countryCode: "IN",
+  //     flagTo: "AE",
+  //   },
+  //   {
+  //     id: "S00092298",
+  //     status: "Transshipment",
+  //     from: "Singapore",
+  //     to: "Riyadh",
+  //     countryCode: "IN",
+  //     flagTo: "SA",
+  //   },
+  //   {
+  //     id: "BIPJEB2407415L",
+  //     status: "Transshipment",
+  //     from: "Singapore",
+  //     to: "Aqaba",
+  //     countryCode: "IN",
+  //     flagTo: "SE",
+  //   },
+  //   {
+  //     id: "SEJEA24080291-03",
+  //     status: "Transshipment",
+  //     from: "Singapore",
+  //     to: "Mombasa",
+  //     countryCode: "IN",
+  //     flagTo: "SE",
+  //   },
+  //   {
+  //     id: "BIPAQA2407422M", // Ensure unique IDs
+  //     status: "Import",
+  //     from: "Singapore",
+  //     to: "Jebel Ali",
+  //     countryCode: "IN",
+  //     flagTo: "SE",
+  //   },
+  //   {
+  //     id: "BIPAQA2407422", // Ensure unique IDs
+  //     status: "Import",
+  //     from: "Singapore",
+  //     to: "Jebel Ali",
+  //     countryCode: "IN",
+  //     flagTo: "SE",
+  //   },
+  // ];
 
-  const [activeTab, setActiveTab] = useState("Import");
-  const [selectedShipment, setSelectedShipment] = useState(null);
+  // const [activeTab, setActiveTab] = useState("Import");
+  // const [selectedShipment, setSelectedShipment] = useState(null);
 
-  const getFilteredData = (status) => {
-    return shipmentData.filter((item) => item.status === status);
-  };
+  // const getFilteredData = (status) => {
+  //   return shipmentData.filter((item) => item.status === status);
+  // };
 
-  const handleShipmentSelect = (shipment) => {
-    setSelectedShipment(shipment);
-  };
+  // const handleShipmentSelect = (shipment) => {
+  //   setSelectedShipment(shipment);
+  // };
 
-  // Counts for the tabs
-  const importCount = getFilteredData("Import").length;
-  const transshipmentCount = getFilteredData("Transshipment").length;
+  // // Counts for the tabs
+  // const importCount = getFilteredData("Import").length;
+  // const transshipmentCount = getFilteredData("Transshipment").length;
 
   return (
     // <div className="shipment_details_section container-fluid p-0" style={{marginTop:"4.7rem",backgroundColor: "#F3F5F7"}} >
@@ -336,47 +336,17 @@ const ShipmentBase = ({ open, close, rowData }) => {
           />
           <ShipmentHeader rowDatas={rowData} close={close} />
 
-          <div className="d-flex align-items-start mb-2">
-            <ShipmentTabs
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              importCount={importCount}
-              transshipmentCount={transshipmentCount}
+          <div className="d-flex gap-3">
+            <ShipmentSideNav />
+
+            <ShipmentTable
+              contentListNoTitle={contentListNoTitle}
+              tabListNoTitle={tabListNoTitle}
+              setVesselmodalopen={setVesselmodalopen}
+              close={close}
+              rowDatas={rowData}
             />
           </div>
-
-          <Row className="">
-            <Col span={6}>
-              <div
-                className="shipmentsidebar"
-                style={{
-                  width: "100%",
-                  maxWidth: "300px",
-                  height: "100vh",
-                  border: "1px solid #E7E8F2",
-                  background: "#F3F5F7",
-                }}
-              >
-                {getFilteredData(activeTab).map((item) => (
-                  <ShipmentSideNav
-                    key={item.id}
-                    {...item}
-                    onClick={() => handleShipmentSelect(item)}
-                  />
-                ))}
-              </div>
-            </Col>
-            <Col span={18}>
-              <ShipmentTable
-                contentListNoTitle={contentListNoTitle}
-                tabListNoTitle={tabListNoTitle}
-                setVesselmodalopen={setVesselmodalopen}
-                close={close}
-                rowDatas={rowData}
-              />
-            </Col>
-          </Row>
-          {/* </div> */}
 
           {/* <VscClose size={22} color='black' role='button' onClick={()=>close(false)} style={{position:"absolute",top:"0px",right:"-22px"}} /> */}
         </DialogContent>

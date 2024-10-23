@@ -31,7 +31,7 @@ const ShipmentsHome = ({
         backgroundColor: "rgb(248, 250, 252)",
       }}
     >
-      <div style={{ backgroundColor: "white" }}>
+      {/* <div style={{ backgroundColor: "white" }}>
         <div style={{ width: "1255px" }} className="shipmentIndex pb-4 mx-auto">
           {!showText ? (
             showmap ? (
@@ -76,7 +76,7 @@ const ShipmentsHome = ({
           )}
           {showText ? "" : showmap && <Map />}
         </div>
-      </div>
+      </div> */}
 
       {!showText ? (
         <div style={{ backgroundColor: "white", height: "175px" }}></div>

@@ -1,30 +1,34 @@
-.ship_section .ant-card-body{
+.ship_section .ant-card-body {
     padding: 0px !important;
 }
-.ship_section .reference_row{
+
+.ship_section .reference_row {
     height: 39px;
-    margin:0px -2px 20px -2px; 
+    margin: 0px -2px 20px -2px;
     background-color: #F3F5F7 !important;
     border-radius: 8px;
 }
-.ship_section .reference_row>div{
+
+.ship_section .reference_row>div {
     display: flex;
     align-items: center;
     justify-content: start;
 }
-.ship_section .reference_row>div>h6:nth-child(1){
+
+.ship_section .reference_row>div>h6:nth-child(1) {
     color: #495A6E;
     white-space: nowrap;
 }
-.ship_section .reference_row>div>h6{
+
+.ship_section .reference_row>div>h6 {
     font-weight: 500;
     font-size: 16px;
     line-height: 18.75px;
     white-space: nowrap;
 }
 
-.ship_section .customer_reference{
-    width:100%;
+.ship_section .customer_reference {
+    width: 100%;
     padding: 20px;
     background-color: #FFFFFF;
     border: 1px solid #f0f0f0;
@@ -32,27 +36,31 @@
 
 
 /* destination_row */
-.ship_section .destination_row .flag_img{
+.ship_section .destination_row .flag_img {
     width: 18px !important;
     height: 14px !important;
 }
-.ship_section{
+
+.ship_section {
     margin-bottom: 20px;
 }
-.ship_section .destination_row{
+
+.ship_section .destination_row {
     display: flex;
     flex-wrap: wrap !important;
 }
-.ship_section .destination_row p{
+
+.ship_section .destination_row p {
     font-weight: 500;
     font-size: 16px;
     line-height: 26px;
     letter-spacing: .01em !important;
     text-align: center;
     color: #181E25 !important;
-    
+
 }
-.ship_section .destination_row .left_column{
+
+.ship_section .destination_row .left_column {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -60,22 +68,24 @@
     height: 32px;
     margin-bottom: 20px;
 }
-.ship_section .destination_row .left_column>*{
+
+.ship_section .destination_row .left_column>* {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.ship_section .destination_row .estimate_box>p:nth-child(2){
+
+.ship_section .destination_row .estimate_box>p:nth-child(2) {
     font-size: 15px;
     font-weight: 400;
     line-height: 25px;
-    letter-spacing:.01em !important;
+    letter-spacing: .01em !important;
     color: #495A6E;
     white-space: nowrap !important;
 
 }
 
-.ship_section .right_column{
+.ship_section .right_column {
     display: flex;
     align-items: center;
     justify-content: end;
@@ -92,12 +102,12 @@
     color: black;
     height: 30px;
 } */
-.ship_section .destination_row .bookedButton span{
+.ship_section .destination_row .bookedButton span {
     text-decoration: none;
     font-weight: 400;
     font-size: 13px;
     line-height: 19px;
-    letter-spacing:.01em !important;
+    letter-spacing: .01em !important;
     color: #384656;
     border: 1px solid #008000;
     background-color: #0080001A;
@@ -107,7 +117,8 @@
 
 
 }
-.ship_section .destination_row .menu_icon img{
+
+.ship_section .destination_row .menu_icon img {
     text-decoration: none;
     background-color: #F2F4F8;
     height: 32px;
@@ -120,7 +131,7 @@
 
 
 /* booking_row */
-.ship_section .booking_row{
+.ship_section .booking_row {
     display: flex;
     flex-direction: row !important;
     justify-content: space-between;
@@ -129,35 +140,37 @@
     border-radius: 8px;
     margin-bottom: 20px;
 }
-.ship_section .booking_row>div{
+
+.ship_section .booking_row>div {
     height: 100%;
 }
 
-.ship_section .booking_row>div p{
+.ship_section .booking_row>div p {
     white-space: nowrap;
 }
 
-.ship_section .booking_row>div>p:nth-child(1){
+.ship_section .booking_row>div>p:nth-child(1) {
     font-weight: 400;
     font-size: 13px;
     line-height: 19px;
-    letter-spacing:.01em !important;
+    letter-spacing: .01em !important;
     color: #495A6E;
     margin-bottom: 4px;
 
 }
-.ship_section .booking_row>div>p:nth-child(2){
+
+.ship_section .booking_row>div>p:nth-child(2) {
     font-weight: 500;
     font-size: 15px;
     line-height: 22px;
-    letter-spacing:.01em !important;
+    letter-spacing: .01em !important;
     color: #384656;
     ;
 
 }
 
 /* booking_status_row */
-.ship_section .booking_status_row{
+.ship_section .booking_status_row {
     background-color: #F3F5F7;
     border-radius: 8px;
     padding: 20px 0px 20px 0px;
@@ -165,22 +178,27 @@
     margin-bottom: 20px;
     overflow: hidden;
 }
-.ship_section .table-responsive{
+
+.ship_section .table-responsive {
     scroll-behavior: smooth;
 }
-.ship_section .table-responsive::-webkit-scrollbar{
+
+.ship_section .table-responsive::-webkit-scrollbar {
     display: none;
 }
-.ship_section .dragging{
+
+.ship_section .dragging {
     scroll-behavior: auto;
     cursor: grab;
 }
-.ship_section .table-responsive .dragging .tab{
+
+.ship_section .table-responsive .dragging .tab {
     user-select: none;
 }
+
 /* for arrow Styling */
 
-.ship_section .table-responsive .arrow_icon{
+.ship_section .table-responsive .arrow_icon {
     width: 50px;
     height: 100%;
     position: absolute;
@@ -189,52 +207,60 @@
     align-items: center;
     z-index: 999;
 }
-.ship_section .table-responsive .arrow_icon:first-child{
+
+.ship_section .table-responsive .arrow_icon:first-child {
     left: 0;
-    background:linear-gradient(90deg,#F3F5F7 70%,transparent);
+    background: linear-gradient(90deg, #F3F5F7 70%, transparent);
     justify-content: start;
 }
-.ship_section .table-responsive .arrow_icon:last-child{
+
+.ship_section .table-responsive .arrow_icon:last-child {
     right: 0;
-    background:linear-gradient(-90deg,#F3F5F7 70%,transparent);
+    background: linear-gradient(-90deg, #F3F5F7 70%, transparent);
     justify-content: end;
 }
-.ship_section .table-responsive .arrow_icon:first-child svg{
+
+.ship_section .table-responsive .arrow_icon:first-child svg {
     width: 100%;
 }
-.ship_section .table-responsive .arrow_icon:last-child svg{
+
+.ship_section .table-responsive .arrow_icon:last-child svg {
     width: 100%;
 }
 
 /* estimate_row */
-.ship_section .estimated_row .estimated_header{
+.ship_section .estimated_row .estimated_header {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
     height: 39px;
 }
-.ship_section .estimated_row .estimated_header>:nth-child(2){
+
+.ship_section .estimated_row .estimated_header>:nth-child(2) {
     font-weight: 500;
     font-size: 16px;
     line-height: 18.75px;
     color: #495A6E !important;
     padding: 10px 5px !important;
 }
-.ship_section .estimated_row .estimated_header>:nth-child(3){
+
+.ship_section .estimated_row .estimated_header>:nth-child(3) {
     font-weight: 500;
     font-size: 16px;
     line-height: 18.75px;
     color: #495A6E;
     padding: 20px;
 }
-.ship_section .estimated_row .estimated_header p span{
+
+.ship_section .estimated_row .estimated_header p span {
     font-weight: 400;
     font-size: 16px;
     line-height: 19.2px;
-    color:#384656;
+    color: #384656;
 
 }
-.ship_section .estimated_row .estimated_body p{
+
+.ship_section .estimated_row .estimated_body p {
     font-family: "Lato";
     font-weight: 400;
     font-size: 16px;
@@ -245,7 +271,7 @@
 }
 
 /* for_line_style */
-.ship_section .booking_status_column ul:before{
+.ship_section .booking_status_column ul:before {
     color: #ddd;
     bottom: 0;
     content: "";
@@ -256,7 +282,8 @@
     width: 2px;
     border-left-style: dashed;
 }
-.ship_section .before_circle{
+
+.ship_section .before_circle {
     background-color: #198038;
     ;
     background-image: url(../../../assets/Tick.svg);
@@ -267,7 +294,8 @@
     height: 20px;
     width: 20px;
 }
-.ship_section .before_circle_list{
+
+.ship_section .before_circle_list {
     background: #fff;
     height: 10px;
     margin: 0;

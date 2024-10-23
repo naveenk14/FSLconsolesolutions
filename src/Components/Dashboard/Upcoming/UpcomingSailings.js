@@ -230,7 +230,7 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
                   alignSelf: "center",
                   pointerEvents: "auto",
                 }}
-                onClick={(e) => handleBookNow(e, data)}
+                // onClick={(e) => handleBookNow(e, data)}
               >
                 <span style={{ fontSize: "13px" }}>Book Now</span>
               </button>

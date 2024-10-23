@@ -26,7 +26,8 @@ import FindNewRate from "./Components/Quotations/QuotaionTable/QModal/FindNewRat
 import Quick from "./Components/QuickBooking/Quick";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import shipgif from "./assets/shiploadinggif.gif"
+import shipgif from "./assets/shiploadinggif.gif";
+import SolutionTabs from "./Components/Shipments/SolutionTabs";
 
 const MainContent = ({
   showmap,
@@ -65,43 +66,45 @@ const MainContent = ({
         />
       )}
       <div style={{ marginTop: "76px" }}></div>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ShipmentsHome
-                showmap={showmap}
-                setShowmap={setShowmap}
-                showText={showText}
-                setShowText={setShowText}
-                setOriginPort={setOriginPort} 
-                setDestPort={setDestPort}
-              />
-            }
-          />
-          <Route path="/recentBooking" element={<RecentBooking />} />
-          <Route path="/inbox" element={<Inbox />} />
-          <Route path="/invoice" element={<Invoice />} />
-          <Route
-            path="/quotation"
-            element={
-              <Quotation
-                showReselt={showReselt}
-                setShowReselt={setShowReselt}
-                showHeader={showHeader}
-                setShowHeader={setShowHeader}
-                originPort={originPort} 
-                setOriginPort={setOriginPort}
-                destPort={destPort} 
-                setDestPort={setDestPort}
-              />
-            }
-          />
-          <Route path="/shipmentdetails" element={<ShipmentBase />} />
-          <Route path="/findnewrate" element={<FindNewRate />} />
-          <Route path="/profile" element={<ProfileBase />} />
-          <Route path="/quick" element={<Quick />} />
-        </Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ShipmentsHome
+              showmap={showmap}
+              setShowmap={setShowmap}
+              showText={showText}
+              setShowText={setShowText}
+              setOriginPort={setOriginPort}
+              setDestPort={setDestPort}
+            />
+          }
+        />
+        <Route path="/Schedules" element={<SolutionTabs />} />
+
+        <Route path="/recentBooking" element={<RecentBooking />} />
+        <Route path="/inbox" element={<Inbox />} />
+        <Route path="/invoice" element={<Invoice />} />
+        <Route
+          path="/quotation"
+          element={
+            <Quotation
+              showReselt={showReselt}
+              setShowReselt={setShowReselt}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              originPort={originPort}
+              setOriginPort={setOriginPort}
+              destPort={destPort}
+              setDestPort={setDestPort}
+            />
+          }
+        />
+        <Route path="/shipmentdetails" element={<ShipmentBase />} />
+        <Route path="/findnewrate" element={<FindNewRate />} />
+        <Route path="/profile" element={<ProfileBase />} />
+        <Route path="/quick" element={<Quick />} />
+      </Routes>
       {showfooter && <Footer />}
       <ToastContainer
         position="top-right"

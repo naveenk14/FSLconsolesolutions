@@ -20,12 +20,12 @@ import { useNavigate } from "react-router-dom";
 import { allportRequest } from "../../../Redux/Actions/AllPortAction";
 import { hover } from "@testing-library/user-event/dist/hover";
 
-const UpcomingSailings = ({setOriginPort,setDestPort}) => {
-  const [displayedSchedules, setDisplayedSchedules] = useState(4);
+const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
+  const [displayedSchedules, setDisplayedSchedules] = useState(10);
   const [displaySailingData, setDisplaySailingData] = useState(4);
   const [orgPortCode, setOrgPortCode] = useState("");
   const [desPortCode, setDesPortCode] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const UpcomingData = useSelector((state) => state.Sailing);
   const originPortData = useSelector((state) => state.allPort);
@@ -35,7 +35,7 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
   useEffect(() => {
     dispatch(sailingRequest());
   }, []);
-   //This is for call profile_data api
+  //This is for call profile_data api
   // const dispatch = useDispatch();
   useEffect(() => {
     dispatch(profileRequest());
@@ -85,26 +85,24 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const handleBookNow = (e,data) => {
+  const handleBookNow = (e, data) => {
     e.preventDefault();
     e.stopPropagation();
     console.log("booknow");
     // if(data?.origin){
     //   dispatch(allportRequest({ search_key: data?.origin, limits: "1" }));
     //   setOriginPort(originPortDataValue[0])
-    //   navigate('/quotation') 
+    //   navigate('/quotation')
     //   console.log(originPortDataValue)
     // }
     // if(data?.destination){
     //   dispatch(allportRequest({ search_key: data?.destination, limits: "1" }));
     // }
     // console.log()
-    navigate('/quotation',{state:{data}}) 
+    navigate("/quotation", { state: { data } });
   };
-  
 
   const renderAccordion = (data, index) => {
-    
     return (
       <div key={index}>
         <Accordion
@@ -118,8 +116,8 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
             borderBottom: "1px solid #F3F5F7",
             "&:hover": {
               backgroundColor: "#F8FAFC",
-              borderBottom:" 3px solid #F3F5F7",
-              boxShadow:" 0px 3px 6px 0px #00000040",
+              borderBottom: " 3px solid #F3F5F7",
+              boxShadow: " 0px 3px 6px 0px #00000040",
             },
           }}
           className="acc-row mx-1"
@@ -230,11 +228,11 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
                   border: "none",
                   height: "30px",
                   alignSelf: "center",
-                  pointerEvents: "auto"
+                  pointerEvents: "auto",
                 }}
-                onClick={(e)=>handleBookNow(e,data)}
+                onClick={(e) => handleBookNow(e, data)}
               >
-                <span style={{ fontSize: "13px" }} >Book Now</span>
+                <span style={{ fontSize: "13px" }}>Book Now</span>
               </button>
             </div>
           </AccordionSummary>
@@ -300,7 +298,11 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
       return (
         <div
           className="text-center"
-          style={{ height: "50vh", alignContent: "center",backgroundColor:"white" }}
+          style={{
+            height: "50vh",
+            alignContent: "center",
+            backgroundColor: "white",
+          }}
         >
           No data found
         </div>
@@ -315,7 +317,11 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
       return (
         <div
           className="text-center"
-          style={{ height: "50vh", alignContent: "center",backgroundColor:"white" }}
+          style={{
+            height: "50vh",
+            alignContent: "center",
+            backgroundColor: "white",
+          }}
         >
           No data found
         </div>
@@ -337,25 +343,25 @@ const UpcomingSailings = ({setOriginPort,setDestPort}) => {
 
       {sailingData ? sailingdataShow() : schedulesDataShow()}
       {(sailingData?.length > 0 || schedules?.length > 0) && (
-      <div
-        className="card-footer p-3"
-        style={{
-          fontSize: "14px",
-          fontWeight: "400",
-          backgroundColor: "#F8FAFC",
-        }}
-        role="button"
-        onClick={handleShowMore}
-      >
-        {sailingData
-          ? displaySailingData === 4
+        <div
+          className="card-footer p-3"
+          style={{
+            fontSize: "14px",
+            fontWeight: "400",
+            backgroundColor: "#F8FAFC",
+          }}
+          role="button"
+          onClick={handleShowMore}
+        >
+          {sailingData
+            ? displaySailingData === 10
+              ? "Show More"
+              : "Show Less"
+            : displayedSchedules === 10
             ? "Show More"
-            : "Show Less"
-          : displayedSchedules === 4
-          ? "Show More"
-          : "Show Less"}
-      </div>
-       )}
+            : "Show Less"}
+        </div>
+      )}
     </div>
   );
 };

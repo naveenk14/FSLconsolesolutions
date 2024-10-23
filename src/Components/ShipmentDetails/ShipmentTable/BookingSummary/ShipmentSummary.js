@@ -15,7 +15,8 @@ const ShipmentSummary = () => {
     bookingData?.viewBookingData?.customercode[0]?.container_no;
   const conatiner_array = conatinerno?.split(",");
 
-  const requirementDescription = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit ipsum commodi inventore nam explicabo voluptatibus optio non voluptatem dolore soluta nisi voluptatum mollitia quam minus consectetur quisquam omnis, possimus asperiores harum aperiam aliquid voluptates doloribus? Odit accusamus quia reiciendis doloribus, quibusdam dolor mollitia, nam totam provident maiores ad deleniti. Officiis est voluptate dolore numquam pariatur unde placeat, facere a rerum! Illo praesentium asperiores architecto dolorem, accusamus eligendi quibusdam consequuntur tempora autem culpa temporibus! Facilis, ipsa dolorum. Cupiditate sit dolores optio magnam amet nemo obcaecati, eum repellat. Expedita quas dicta repellendus. Inventore mollitia totam laboriosam autem ipsam debitis animi, perspiciatis cum minima similique, sunt doloribus alias maxime magni nesciunt beatae quia iure earum nihil ut ea voluptatum, ratione ipsa. Veritatis dolores facere accusamus! Veritatis pariatur explicabo excepturi magni perspiciatis quidem inventore nostrum cupiditate ratione optio tenetur, iste ullam eos eligendi mollitia consequuntur sapiente ducimus vel suscipit, deleniti quaerat dolor dignissimos harum porro. Doloremque esse veritatis quod, sit similique porro harum voluptatem at, cum, eligendi ipsam nam! Alias saepe voluptatum beatae, tempore dolore dolorum quaerat excepturi harum qui, commodi vero voluptate totam possimus unde fuga quod vel veniam sapiente eligendi, odio assumenda illum. Blanditiis, quam! Suscipit, nisi consectetur. Laudantium, quaerat. Accusantium, ullam."
+  const requirementDescription =
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit ipsum commodi inventore nam explicabo voluptatibus optio non voluptatem dolore soluta nisi voluptatum mollitia quam minus consectetur quisquam omnis, possimus asperiores harum aperiam aliquid voluptates doloribus? Odit accusamus quia reiciendis doloribus, quibusdam dolor mollitia, nam totam provident maiores ad deleniti. Officiis est voluptate dolore numquam pariatur unde placeat, facere a rerum! Illo praesentium asperiores architecto dolorem, accusamus eligendi quibusdam consequuntur tempora autem culpa temporibus! Facilis, ipsa dolorum. Cupiditate sit dolores optio magnam amet nemo obcaecati, eum repellat. Expedita quas dicta repellendus. Inventore mollitia totam laboriosam autem ipsam debitis animi, perspiciatis cum minima similique, sunt doloribus alias maxime magni nesciunt beatae quia iure earum nihil ut ea voluptatum, ratione ipsa. Veritatis dolores facere accusamus! Veritatis pariatur explicabo excepturi magni perspiciatis quidem inventore nostrum cupiditate ratione optio tenetur, iste ullam eos eligendi mollitia consequuntur sapiente ducimus vel suscipit, deleniti quaerat dolor dignissimos harum porro. Doloremque esse veritatis quod, sit similique porro harum voluptatem at, cum, eligendi ipsam nam! Alias saepe voluptatum beatae, tempore dolore dolorum quaerat excepturi harum qui, commodi vero voluptate totam possimus unde fuga quod vel veniam sapiente eligendi, odio assumenda illum. Blanditiis, quam! Suscipit, nisi consectetur. Laudantium, quaerat. Accusantium, ullam.";
 
   const totalWeight = "500000000010 KG";
   const totalVolume = "1023.45698 CBM";
@@ -108,7 +109,7 @@ const ShipmentSummary = () => {
 
   const MinContainer = newContainerArray?.filter((item) => item.key <= 1);
   console.log(MinContainer);
-  const MoreContainer = newContainerArray?.filter((item) => item.key >= 1 );
+  const MoreContainer = newContainerArray?.filter((item) => item.key >= 1);
   console.log(MoreContainer);
 
   //container_details_modal
@@ -128,13 +129,13 @@ const ShipmentSummary = () => {
     setTextCount(length);
   }, [textInput]);
 
-  const modalref = useRef()
+  const modalref = useRef();
 
   useEffect(() => {
     const handler = (e) => {
       if (!modalref?.current?.contains(e.target)) {
-        console.log("success")
-        handleContClose()
+        console.log("success");
+        handleContClose();
       }
     };
 
@@ -266,39 +267,246 @@ const ShipmentSummary = () => {
                     );
                   })}
                 </div>
-                <div className="col">
-                  {/* <p className="row_head">No of Units</p>
-                  {ViewBooking?.map((item) => {
-                    return (
-                      <p className="row_head2">
-                        {item?.no_of_units?.length <= 12 ? (
-                          item?.no_of_units
-                        ) : (
-                          <Tooltip
-                            placement="topLeft"
-                            title={item?.no_of_units}
-                          >
-                            <span role="button">
-                              {item?.no_of_units
-                                ?.slice(0, 13)
-                                ?.trim()
-                                ?.split("")
-                                ?.join("") + "..."}
-                            </span>
-                          </Tooltip>
-                        )}
-                      </p>
-                    );
-                  })} */}
-                </div>
-                <div className="col">
-                  {/* <p className="row_head">Stackable Cargo</p>
-                  <p className="row_head2">Yes</p> */}
-                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* <div className="col-6 mb-3">
+          <div className="card h-100">
+            <div className="card-header">
+              <p className="Header">Shipment Details</p>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col">
+                  <p className="row_head mb-2">No of Units</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      1
+                      {item?.no_of_units?.length <= 12 ? (
+                        item?.no_of_units
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.no_of_units}
+                        >
+                          <span role="button">
+                            {item?.no_of_units?.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="col">
+                  <p className="row_head mb-2">Package Type</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      PKG
+                      {item?.package_type?.length <= 12 ? (
+                        item?.package_type
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.package_type}
+                        >
+                          <span role="button">
+                            {item?.package_type.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="col">
+                  <p className="row_head mb-2">Total Weight</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      500 KG
+                      {item?.total_weight?.length <= 12 ? (
+                        item?.total_weight
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.total_weight}
+                        >
+                          <span role="button">
+                            {item?.total_weight.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="col">
+                  <p className="row_head mb-2">Total Volume</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      200 CBM
+                      {item?.total_volume?.length <= 12 ? (
+                        item?.total_volume
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.total_volume}
+                        >
+                          <span role="button">
+                            {item?.total_volume.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+             
+              <div className="row">
+                <div className="col">
+                  <p className="row_head mb-2">Cargo Type</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      {item?.cargo_type?.length <= 15 ? (
+                        item?.cargo_type
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.cargo_type}
+                        >
+                          <span role="button">
+                            {item?.cargo_type.slice(0, 16).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="col">
+                  <p className="row_head mb-2" style={{ width: "150%" }}>
+                    Cargo Ready Date
+                  </p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      {item?.cargo_ready_date?.length <= 12 ? (
+                        item?.cargo_ready_date
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.cargo_ready_date}
+                        >
+                          <span role="button">
+                            {item?.cargo_ready_date?.slice(0, 13).trim() +
+                              "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="col">
+                  <p className="row_head mb-2">HS Code</p>
+                  {ViewBooking?.map((item, index) => (
+                    <p key={index} className="row_head2">
+                      {item?.hs_code?.length <= 12 ? (
+                        item?.hs_code
+                      ) : (
+                        <Tooltip
+                          placement="topLeft"
+                          zIndex={9999}
+                          title={item?.hs_code}
+                        >
+                          <span role="button">
+                            {item?.hs_code.slice(0, 13).trim() + "..."}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+             
+              {ViewBooking?.map((item, index) =>
+                item?.product !== "AIR" ? (
+                  <div className="row" key={index}>
+                    <div className="col">
+                      <p className="row_head mb-2">Container Type</p>
+                      <p className="row_head2">
+                        {item?.container_type ? (
+                          item?.container_type.length <= 40 ? (
+                            item?.container_type
+                          ) : (
+                            <Tooltip
+                              placement="topLeft"
+                              zIndex={9999}
+                              title={item?.container_type}
+                            >
+                              <span role="button">
+                                {item?.container_type.slice(0, 41).trim() +
+                                  "..."}
+                              </span>
+                            </Tooltip>
+                          )
+                        ) : (
+                          <span className="sample-data">40 HC</span>
+                        )}
+                      </p>
+                    </div>
+
+                    <div className="col">
+                      <p className="row_head  mb-2">Container Details</p>
+                      {newContainerArray?.length > 0 ? (
+                        newContainerArray.map((containerItem, i) => (
+                          <p key={i} className="row_head2">
+                            {containerItem?.container}
+                          </p>
+                        ))
+                      ) : (
+                        <span className="sample-data">HLBU1046823</span>
+                      )}
+                    </div>
+
+                    <div className="col">
+                      <p className="row_head mb-2">Seal Number</p>
+                      <p className="row_head2">
+                        {item?.seal_number ? (
+                          item?.seal_number.length <= 15 ? (
+                            item?.seal_number
+                          ) : (
+                            <Tooltip
+                              placement="topLeft"
+                              zIndex={9999}
+                              title={item?.seal_number}
+                            >
+                              <span role="button">
+                                {item?.seal_number.slice(0, 16).trim() + "..."}
+                              </span>
+                            </Tooltip>
+                          )
+                        ) : (
+                          <span className="sample-data">BS964567</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                ) : null
+              )}
+            </div>
+          </div>
+        </div> */}
+
         <div className="col-6 mb-3">
           <div className="card h-100">
             <div className="card-header">
@@ -356,10 +564,10 @@ const ShipmentSummary = () => {
                 <div className="col">
                   <p className="row_head">Cargo Ready Date</p>
                   {ViewBooking?.map((item) => {
-                    console.log(item)
+                    console.log(item);
                     return (
                       <p className="row_head2">
-                      {item?.["cargo_ready_date "]?.length <= 12 ? (
+                        {item?.["cargo_ready_date "]?.length <= 12 ? (
                           item?.["cargo_ready_date "]
                         ) : (
                           <Tooltip
@@ -408,54 +616,59 @@ const ShipmentSummary = () => {
                 </div>
               </div>
               {ViewBooking?.map((item) => {
-                return item?.product !== "AIR" ?
-              <div className="row  mx-0">
-                <div className="col">
-                  <p className="row_head">No of Containers</p>
-                  {ViewBooking?.map((item) => {
-                    return (
-                      <p className="row_head2">
-                        {item?.no_of_containers.length <= 40 ? (
-                          item?.no_of_containers
-                        ) : (
-                          <Tooltip
-                            placement="topLeft"
-                            zIndex={9999}
-                            title={item?.no_of_containers}
-                          >
-                            <span role="button">
-                              {item?.no_of_containers
-                                ?.slice(0, 41)
-                                ?.trim()
-                                ?.split("")
-                                ?.join("") + "..."}
-                            </span>
-                          </Tooltip>
-                        )}
-                      </p>
-                    );
-                  })}
-                </div>
-                <div className="col">
-                <p className="row_head">Container Details</p>
-                  {newContainerArray?.length <= 1 ? (
-                    <>
-                      {newContainerArray.map((item, i) => {
+                return item?.product !== "AIR" ? (
+                  <div className="row  mx-0">
+                    <div className="col">
+                      <p className="row_head">No of Containers</p>
+                      {ViewBooking?.map((item) => {
                         return (
-                          <p key={i} className="row_head2">
-                            {item?.container}
+                          <p className="row_head2">
+                            {item?.no_of_containers.length <= 40 ? (
+                              item?.no_of_containers
+                            ) : (
+                              <Tooltip
+                                placement="topLeft"
+                                zIndex={9999}
+                                title={item?.no_of_containers}
+                              >
+                                <span role="button">
+                                  {item?.no_of_containers
+                                    ?.slice(0, 41)
+                                    ?.trim()
+                                    ?.split("")
+                                    ?.join("") + "..."}
+                                </span>
+                              </Tooltip>
+                            )}
                           </p>
                         );
                       })}
-                    </>
-                  ) : (
-                    <>
-                      {MinContainer?.map((item, i) => (
-                        <p key={i} role="button" className="container_extrapara p-0" onClick={() => handleContOpen()}>
-                          {item?.container}...
-                        </p>
-                      ))}
-                      {/* <span
+                    </div>
+                    <div className="col">
+                      <p className="row_head">Container Details</p>
+                      {newContainerArray?.length <= 1 ? (
+                        <>
+                          {newContainerArray.map((item, i) => {
+                            return (
+                              <p key={i} className="row_head2">
+                                {item?.container}
+                              </p>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          {MinContainer?.map((item, i) => (
+                            <p
+                              key={i}
+                              role="button"
+                              className="container_extrapara p-0"
+                              onClick={() => handleContOpen()}
+                            >
+                              {item?.container}...
+                            </p>
+                          ))}
+                          {/* <span
                         role="button"
                         style={{ color: "#00c4ff" }}
                         className="container_extrapara"
@@ -463,12 +676,15 @@ const ShipmentSummary = () => {
                       >
                         Show more...
                       </span> */}
-                    </>
-                  )}
-                </div>
-                <div className="col"></div>
-              </div>:""
-               })}
+                        </>
+                      )}
+                    </div>
+                    <div className="col"></div>
+                  </div>
+                ) : (
+                  ""
+                );
+              })}
             </div>
           </div>
         </div>
@@ -588,7 +804,8 @@ const ShipmentSummary = () => {
                         return (
                           <p className="row_head2">
                             {item?.is_import_clearance?.length <= 12 ? (
-                              <u>{item?.is_import_clearance}</u>
+                              // <p>{item?.is_import_clearance ? "No" : ""}</p>
+                              <p>{!item?.is_import_clearance ? "No" : ""}</p>
                             ) : (
                               <Tooltip
                                 placement="topLeft"
@@ -614,7 +831,7 @@ const ShipmentSummary = () => {
                         return (
                           <p className="row_head2">
                             {item?.cargo_pickup?.length <= 12 ? (
-                              <u>{item?.cargo_pickup}</u>
+                              <p>{item?.cargo_pickup}</p>
                             ) : (
                               <Tooltip
                                 placement="topLeft"
@@ -640,7 +857,7 @@ const ShipmentSummary = () => {
                         return (
                           <p className="row_head2">
                             {item?.cargo_insurance?.length <= 12 ? (
-                              <u>{item?.cargo_insurance}</u>
+                              <p>{item?.cargo_insurance}</p>
                             ) : (
                               <Tooltip
                                 placement="topLeft"
@@ -668,7 +885,7 @@ const ShipmentSummary = () => {
                         return (
                           <p className="row_head2">
                             {item?.is_export_clearance?.length <= 12 ? (
-                              <u>{item?.is_export_clearance}</u>
+                              <p>{item?.is_export_clearance}</p>
                             ) : (
                               <Tooltip
                                 placement="topLeft"
@@ -694,7 +911,7 @@ const ShipmentSummary = () => {
                         return (
                           <p className="row_head2">
                             {item?.door_delivery?.length <= 12 ? (
-                              <u>{item?.door_delivery}</u>
+                              <p>{item?.door_delivery}</p>
                             ) : (
                               <Tooltip
                                 placement="topLeft"
@@ -728,7 +945,10 @@ const ShipmentSummary = () => {
             <div className="card-header">
               <p className="Header">Commodity Name</p>
             </div>
-            <div className="card-body" style={{ height: "160px",overflow: "auto" }}>
+            <div
+              className="card-body"
+              style={{ height: "160px", overflow: "auto" }}
+            >
               {/* {newContainerArray.length <= 4 ? (
                 <>
                   {newContainerArray.map((item,i) => {
@@ -775,11 +995,7 @@ const ShipmentSummary = () => {
               })} */}
 
               {ViewBooking?.map((item) => {
-                return (
-                  <p className="container_para">
-                      {item?.commodity_name}
-                  </p>
-                );
+                return <p className="container_para">{item?.commodity_name}</p>;
               })}
               {/* <p className="container_para">{requirementDescription}</p> */}
             </div>

@@ -5,6 +5,7 @@ import "./Booking.css";
 import ShipmentBase from "../../ShipmentDetails/ShipmentTable/ShipmentBase";
 import { Dialog, DialogContent } from "@mui/material";
 import Search from "../../../assets/SearchVector.svg";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export const SearchHeader = ({ bookingData }) => {
   const [notfoundmodal, setNotfoundmodal] = useState(false);
@@ -14,7 +15,7 @@ export const SearchHeader = ({ bookingData }) => {
   const [searchHistory, setSearchHistory] = useState([]); // New state for storing search history
 
   const handleSubmit = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" || e.type === "click") {
       console.log(searchvalue);
       const filteredId = bookingData?.data?.filter(
         (item) =>
@@ -65,6 +66,14 @@ export const SearchHeader = ({ bookingData }) => {
                 alt="search"
                 style={{ marginTop: "-4px" }}
                 className="pe-1"
+              />
+            }
+            suffix={
+              <FaArrowCircleRight
+                size={20}
+                color="red"
+                role="button"
+                onClick={(e) => handleSubmit(e)}
               />
             }
             className="search-input"

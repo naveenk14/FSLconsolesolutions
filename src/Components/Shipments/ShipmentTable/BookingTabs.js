@@ -25,7 +25,7 @@ import { custom_data } from "./CustomData";
 function BookingTabs({ showText, setShowText, setShowmap }) {
   const [searchQuery] = useState("");
   const [data, setData] = useState([]);
-  console.log(data)
+  console.log(data);
   const [schedulemodal, setSchedulemodal] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,17 +40,17 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
   const [filterReport, setFilterReport] = useState();
   const [download, setdownload] = useState();
   const [filterMonthValue, setFilterMonthValue] = useState(null);
-  const [showMore, setshowMore] = useState(false)
-  const [showAllData, setshowAllData] = useState(false)
-  const [scrollHeight, setscrollHeight] = useState("653px")
+  const [showMore, setshowMore] = useState(false);
+  const [showAllData, setshowAllData] = useState(false);
+  const [scrollHeight, setscrollHeight] = useState("653px");
   const dispatch = useDispatch();
   const ShipmentData = useSelector((state) => state.Booking);
   const bookingDatas = ShipmentData?.booking;
   const bookingData = custom_data;
-  console.log("bookingData",bookingData)
-  console.log("bookingDatas",bookingDatas)
-  const tabCount = ShipmentData?.booking?.statuswise_count
-  console.log(tabCount,bookingData)
+  console.log("bookingData", bookingData);
+  console.log("bookingDatas", bookingDatas);
+  const tabCount = ShipmentData?.booking?.statuswise_count;
+  console.log(tabCount, bookingData);
   const [popoverVisible, setPopoverVisible] = useState(false); // State to control Popover visibility
   const [dsrpopoverVisible, setDsrPopoverVisible] = useState(false); // State to control Popover visibility
   // const saveSuccess = useSelector((state) => state?.SaveDsr?.savedsr?.Response);
@@ -203,8 +203,8 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
     }
   };
 
-  console.log(activeTab)
-  console.log(schedule)
+  console.log(activeTab);
+  console.log(schedule);
 
   const exportExcel = () => {
     import("xlsx").then((xlsx) => {
@@ -222,42 +222,32 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
   //for tab change according to show display showmore button
 
   useEffect(() => {
-    if(activeTab && schedule){
-      if(Number(activeTab) === 1 && Number(schedule?.all) > 10){
-        setshowMore(true)
-      }
-      else if(Number(activeTab) === 2 && Number(schedule?.booked) > 10){
-        setshowMore(true)
-      }
-      else if(Number(activeTab) === 3 && Number(schedule?.in_transit) > 10){
-        setshowMore(true)
-      }
-      else if(Number(activeTab) === 4 && Number(schedule?.arrived) > 10){
-        setshowMore(true)
-      }
-      else if(Number(activeTab) === 5 && Number(schedule?.delivered) > 10){
-        setshowMore(true)
-      }
-      else if(Number(activeTab) === 6 && Number(schedule?.cancelled) > 10){
-        setshowMore(true)
-      }
-      else{
-        setshowMore(false)
+    if (activeTab && schedule) {
+      if (Number(activeTab) === 1 && Number(schedule?.all) > 10) {
+        setshowMore(true);
+      } else if (Number(activeTab) === 2 && Number(schedule?.booked) > 10) {
+        setshowMore(true);
+      } else if (Number(activeTab) === 3 && Number(schedule?.in_transit) > 10) {
+        setshowMore(true);
+      } else if (Number(activeTab) === 4 && Number(schedule?.arrived) > 10) {
+        setshowMore(true);
+      } else if (Number(activeTab) === 5 && Number(schedule?.delivered) > 10) {
+        setshowMore(true);
+      } else if (Number(activeTab) === 6 && Number(schedule?.cancelled) > 10) {
+        setshowMore(true);
+      } else {
+        setshowMore(false);
       }
     }
-    
 
-    setshowAllData(false)
-    setscrollHeight("653px")
-    console.log("working")
-  }, [activeTab && schedule,activeTab])
+    setshowAllData(false);
+    setscrollHeight("653px");
+    console.log("working");
+  }, [activeTab && schedule, activeTab]);
 
-
-  
-  
-  console.log(schedule?.all,activeTab)
-  console.log(activeTab)
-  console.log(showMore)
+  console.log(schedule?.all, activeTab);
+  console.log(activeTab);
+  console.log(showMore);
 
   const saveAsExcelFile = (buffer, fileName) => {
     import("file-saver").then((module) => {
@@ -379,6 +369,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
       className="mx-auto mb-4"
       style={{
         minWidth: "1255px",
+        minHeight: "600px",
       }}
     >
       {showText ? (
@@ -407,7 +398,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
           showText={showText}
         />
       )}
-      <Row className="mt-3 border" style={{ borderRadius: "8px" }}>
+      <Row className="mt-5 border" style={{ borderRadius: "8px" }}>
         <Col
           span={24}
           style={{ backgroundColor: "#F8FAFC", borderRadius: "8px" }}
@@ -478,7 +469,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
                     className="ms-1 me-2"
                     onClick={handleTableChange}
                   >
-                    <Tooltip title= "DSR">
+                    <Tooltip title="DSR">
                       <img src={Group1} style={{ cursor: "pointer" }} />
                     </Tooltip>
                   </div>
@@ -491,7 +482,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
                       width: "32px",
                     }}
                   >
-                    <Tooltip title = "Dashboard View">
+                    <Tooltip title="Dashboard View">
                       <img
                         src={Buttonfade}
                         style={{ cursor: "pointer" }}
@@ -508,7 +499,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
                     className="ms-1 me-2"
                     onClick={handleTableChange}
                   >
-                    <Tooltip title = "DSR">
+                    <Tooltip title="DSR">
                       <img src={button16} style={{ cursor: "pointer" }} />
                     </Tooltip>
                   </div>
@@ -527,7 +518,7 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
                       style={{ width: "12px", height: "13.5px" }}
                       onClick={() => setSchedulemodal(true)}
                     />
-                  </Tooltip> 
+                  </Tooltip>
                   <Tooltip title="Download DSR">
                     <img
                       src={image2}
@@ -552,7 +543,6 @@ function BookingTabs({ showText, setShowText, setShowmap }) {
                       onClick={handleSaveDsr}
                     />
                   </Tooltip>
-                  
                 </div>
               )}
             </Col>

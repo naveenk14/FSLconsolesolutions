@@ -11,8 +11,9 @@ import { opensailingRequest } from "../../../Redux/Actions/OpneSailingAction";
 import { CircularProgress, Box } from "@mui/material";
 import { Select, Menu } from "antd";
 import { CalendarOutlined, CaretDownOutlined } from "@ant-design/icons";
-import shipgif from '../../../assets/shiploadinggif.gif'
-import anchor from '../../../assets/anchor.svg'
+import shipgif from "../../../assets/shiploadinggif.gif";
+import anchor from "../../../assets/anchor.svg";
+import { AiOutlineSwap } from "react-icons/ai";
 
 const { Option } = Select;
 
@@ -23,8 +24,8 @@ export const Port = () => {
   const [searchDestPort, setSearchDestPort] = useState("");
   const [originPort, setOriginPort] = useState(null);
   const [destPort, setDestPort] = useState(null);
-    const [originPortOptionsVisible, setOriginPortOptionsVisible] =
-      useState(false);
+  const [originPortOptionsVisible, setOriginPortOptionsVisible] =
+    useState(false);
   const [destPortOptionsVisible, setDestPortOptionsVisible] = useState(false);
   const outerRef = useRef(null);
   const [selectedVolume, setSelectedVolume] = useState("LCL");
@@ -120,6 +121,15 @@ export const Port = () => {
     };
   }, []);
 
+  const handleSwap = () => {
+    setSearchDestPort(searchOriginPort);
+    setSearchOriginPort(searchDestPort);
+    setDesPortCode(orgPortCode);
+    setOrgPortCode(desPortCode);
+    setOriginPort(destPort);
+    setDestPort(originPort);
+  };
+
   return (
     <div
       ref={outerRef}
@@ -134,16 +144,16 @@ export const Port = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          width: "850px",
+          width: "650px",
           justifyContent: "space-between",
         }}
       >
-        <Typography
+        {/* <Typography
           className=" "
-          style={{ fontSize: "15px", fontWeight: "500",color:"#181E25" }}
+          style={{ fontSize: "15px", fontWeight: "500", color: "#181E25" }}
         >
           Upcoming Sailings
-        </Typography>{" "}
+        </Typography>{" "} */}
         <div
           className="d-flex my-2 rounded-1 focusSearch"
           style={{
@@ -190,9 +200,7 @@ export const Port = () => {
             className="placeholder-color focusSearch-input"
             onChange={handleOriginPortChange}
             value={searchOriginPort}
-            />
-
-
+          />
           <ArrowDropDownIcon />
           {originPortOptionsVisible && (
             <div className="outer-port">
@@ -267,6 +275,11 @@ export const Port = () => {
             </div>
           )}{" "}
         </div>
+        <AiOutlineSwap
+          role="button"
+          className="mx-2"
+          onClick={() => handleSwap()}
+        />
         <div
           className="d-flex my-2 rounded-1 focusSearch"
           style={{
@@ -388,18 +401,17 @@ export const Port = () => {
         <Select
           defaultValue={selectedVolume}
           className=""
-          style={{ width: 80, height:40,margin:"8px 0"}}
+          style={{ width: 80, height: 40, margin: "8px 0" }}
           onChange={handleVolumeChange}
-          suffixIcon={<CaretDownOutlined style={{ color: "#67788E" }}/>}
-          
+          suffixIcon={<CaretDownOutlined style={{ color: "#67788E" }} />}
         >
           {volume.map((vol, index) => (
-            <Option key={index} value={vol} disabled={vol !== 'LCL'}>
+            <Option key={index} value={vol} disabled={vol !== "LCL"}>
               {vol}
             </Option>
           ))}
         </Select>
-    </div>
+      </div>
     </div>
   );
 };

@@ -19,10 +19,11 @@ import { profileRequest } from "../../../Redux/Actions/ProfileAction";
 import { useNavigate } from "react-router-dom";
 import { allportRequest } from "../../../Redux/Actions/AllPortAction";
 import { hover } from "@testing-library/user-event/dist/hover";
+import shipgif from "../../../assets/shiploadinggif.gif"
 
 const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
   const [displayedSchedules, setDisplayedSchedules] = useState(10);
-  const [displaySailingData, setDisplaySailingData] = useState(4);
+  const [displaySailingData, setDisplaySailingData] = useState(10);
   const [orgPortCode, setOrgPortCode] = useState("");
   const [desPortCode, setDesPortCode] = useState("");
   const navigate = useNavigate();
@@ -30,7 +31,9 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
   const UpcomingData = useSelector((state) => state.Sailing);
   const originPortData = useSelector((state) => state.allPort);
   const originPortDataValue = originPortData?.allportData?.Data;
-  // const { loading, error } = useSelector((state) => state.Sailing);
+  const { loading, error } = useSelector((state) => state.Sailing);
+  const isloading = useSelector((state) => state.OpenSailing.loading);
+  console.log(isloading);
   console.log(UpcomingData);
   useEffect(() => {
     dispatch(sailingRequest());
@@ -231,7 +234,6 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
                   pointerEvents: "auto",
                 }}
                 // onClick={(e) => handleBookNow(e, data)}
-                
               >
                 <span style={{ fontSize: "13px" }}>Book Now</span>
               </button>
@@ -295,7 +297,24 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
     );
   };
   const sailingdataShow = () => {
-    if (sailingData?.length === 0) {
+    console.log("sdataworked");
+    console.log("loading", loading);
+    if (loading || isloading || UpcomingData.length === 0) {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "353px",
+            // alignSelf:"center"
+          }}
+        >
+          {/* <CircularProgress style={{ color: "red" }} /> */}
+          <img src={shipgif} width="140px" height="140px" />
+        </Box>
+      );
+    } else if (sailingData?.length === 0) {
       return (
         <div
           className="text-center"
@@ -314,7 +333,22 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
       ?.map((data, index) => renderAccordion(data, index));
   };
   const schedulesDataShow = () => {
-    if (!schedules?.length) {
+    if (loading || isloading || UpcomingData.length === 0) {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "353px",
+            // alignSelf:"center"
+          }}
+        >
+          {/* <CircularProgress style={{ color: "red" }} /> */}
+          <img src={shipgif} width="140px" height="140px" />
+        </Box>
+      );
+    } else if (!schedules?.length) {
       return (
         <div
           className="text-center"
@@ -334,7 +368,7 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
   };
   return (
     <div
-      className="w-100 mt-5 shadow mx-auto"
+      className="w-100 mt-4 shadow mx-auto"
       style={{
         minWidth: "1255px",
         borderRadius: "8px",
@@ -343,26 +377,28 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
       <Port />
 
       {sailingData ? sailingdataShow() : schedulesDataShow()}
-      {(sailingData?.length > 0 || schedules?.length > 0) && (
-        <div
-          className="card-footer p-3"
-          style={{
-            fontSize: "14px",
-            fontWeight: "400",
-            backgroundColor: "#F8FAFC",
-          }}
-          role="button"
-          onClick={handleShowMore}
-        >
-          {sailingData
-            ? displaySailingData === 10
+      {(sailingData?.length > 10 || schedules?.length > 10) &&
+        !isloading &&
+        loading && (
+          <div
+            className="card-footer p-3"
+            style={{
+              fontSize: "14px",
+              fontWeight: "400",
+              backgroundColor: "#F8FAFC",
+            }}
+            role="button"
+            onClick={handleShowMore}
+          >
+            {sailingData
+              ? displaySailingData === 10
+                ? "Show More"
+                : "Show Less"
+              : displayedSchedules === 10
               ? "Show More"
-              : "Show Less"
-            : displayedSchedules === 10
-            ? "Show More"
-            : "Show Less"}
-        </div>
-      )}
+              : "Show Less"}
+          </div>
+        )}
     </div>
   );
 };

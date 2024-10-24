@@ -7,7 +7,7 @@ import uil_globe from "../../assets/NewGlobeG.svg";
 import ph_table from "../../assets/NewListB.svg";
 import globBlack from "../../assets/NewGlobeB.svg";
 import listGray from "../../assets/NewListG.svg";
-import { Tooltip } from "antd";
+import { Tooltip, Typography } from "antd";
 
 const SolutionTabs = ({
   showmap,
@@ -77,7 +77,6 @@ const SolutionTabs = ({
           {showText ? "" : showmap && <Map />}
         </div>
       </div> */}
-
       {!showText ? (
         <div style={{ backgroundColor: "white", height: "175px" }}></div>
       ) : (
@@ -102,12 +101,25 @@ const SolutionTabs = ({
           />
         </div>
       )}
-      <div style={{ width: "1255px" }} className="shipmentIndex pb-4 mx-auto">
+      <div
+        style={{ width: "1255px", minHeight: "600px" }}
+        className="shipmentIndex pb-4 mx-auto"
+      >
         {showText ? (
           ""
         ) : (
           <div style={{ height: "90v" }}>
-            {" "}
+            <Typography
+              className=" "
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#181E25",
+                padding: "7px",
+              }}
+            >
+              Sailing Schedules
+            </Typography>{" "}
             <UpcomingSailings
               setOriginPort={setOriginPort}
               setDestPort={setDestPort}

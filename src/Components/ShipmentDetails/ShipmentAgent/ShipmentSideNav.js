@@ -453,11 +453,12 @@ const ShipmentSidNav = () => {
   const transshipmentCount = getFilteredData("Transshipment").length;
 
   return (
-    <div
+    <div className="tabshadow border shadow"
       style={{
         width: "100%",
         maxWidth: "290px",
-        // background: "#F8FAFC",
+        background: "#F8FAFC",
+        borderRadius: "6px",
       }}
     >
       <Tabs

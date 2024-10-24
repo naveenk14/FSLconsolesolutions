@@ -231,6 +231,7 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
                   pointerEvents: "auto",
                 }}
                 // onClick={(e) => handleBookNow(e, data)}
+                
               >
                 <span style={{ fontSize: "13px" }}>Book Now</span>
               </button>

@@ -886,7 +886,7 @@ const AllBookings = ({
               style={{ fontFamily: "Roboto", cursor: "pointer" }}
               className="py-3 d-flex "
             >
-              {/* Order No */}LoadingDate
+              {/* Order No */}Loading Date
               {MultiSelectFilter(
                 "order_no",
                 orderId_,

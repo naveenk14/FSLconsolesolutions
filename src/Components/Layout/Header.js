@@ -7,7 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Cookies from "js-cookie";
 // import { ReactComponent as Logo } from "../../assets/Logo.svg";
-import Logo from "../../assets/WhatsApp Image 2024-09-30 at 13.28.25_7d9602ec.jpg";
+import Logo from "../../assets/FINAL CONSOL SOLUTIONS LOGO2.svg";
 import { ReactComponent as Bell } from "../../assets/bell.svg";
 import { Drawer, Dropdown } from "antd";
 import { useSelector } from "react-redux";
@@ -150,12 +150,12 @@ const Header = ({ setShowText, setShowmap, setShowReselt }) => {
         borderBottom: "1px solid #29333d",
       }}
     >
-      <div className="d-flex">
+      <div className="d-flex align-items-center">
         <div className="align-content-center">
           <img
             src={Logo}
             width="120px"
-            height="35px"
+            height="55px"
             alt="Logo"
             onClick={handleRedirectToShipments}
             style={{ cursor: "pointer" }}

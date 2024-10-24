@@ -307,6 +307,7 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
             justifyContent: "center",
             alignItems: "center",
             height: "353px",
+            background: "white"
             // alignSelf:"center"
           }}
         >
@@ -341,6 +342,7 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
             justifyContent: "center",
             alignItems: "center",
             height: "353px",
+            background: "white"
             // alignSelf:"center"
           }}
         >
@@ -375,7 +377,6 @@ const UpcomingSailings = ({ setOriginPort, setDestPort }) => {
       }}
     >
       <Port />
-
       {sailingData ? sailingdataShow() : schedulesDataShow()}
       {(sailingData?.length > 10 || schedules?.length > 10) &&
         !isloading &&

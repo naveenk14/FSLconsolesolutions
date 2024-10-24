@@ -594,6 +594,7 @@ const AllBookings = ({
 
   //     );
   const paginatedData = showAllData ? filteredData : filteredData;
+  console.log(paginatedData)
   const noData = () => {
     return (
       <div
@@ -983,9 +984,9 @@ const AllBookings = ({
         </span>
       )}
 
-      <span role="button"  className="show-more" onClick={()=>{return (setshowAllData(!showAllData),setscrollHeight((prev)=>prev==="653px"?"1243px":"653px"))}} >
+      {/* <span role="button"  className="show-more" onClick={()=>{return (setshowAllData(!showAllData),setscrollHeight((prev)=>prev==="653px"?"1243px":"653px"))}} >
             {showAllData ? "Show Less" : "Show More"}
-        </span>
+        </span> */}
       {/* <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
